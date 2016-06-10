@@ -10,7 +10,7 @@
 #import "ClassViewCell.h"
 #import "DayOfWeekCell.h"
 #import "ClassListViewController.h"
-#import "AttendanceCountViewController.h"
+#import "AttendanceRecordViewController.h"
 
 @interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -60,10 +60,12 @@
 //            UICollectionViewCell *cell=[self.collectionView cellForItemAtIndexPath:indexPath];
 //
 //            
-            if (indexPath.row == 1) {
+            if (indexPath.row == 1 || indexPath.row == 2) {
                 
     
-                AttendanceCountViewController *viewController = [[AttendanceCountViewController alloc] init];
+                AttendanceRecordViewController *viewController = [[AttendanceRecordViewController alloc] init];
+                
+                viewController.indexPath = indexPath;
 
                 [self.navigationController pushViewController:viewController animated:YES];
                 
@@ -209,17 +211,5 @@
     
     return CGSizeMake(0, 0);
 }
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

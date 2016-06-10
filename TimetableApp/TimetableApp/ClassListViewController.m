@@ -120,15 +120,12 @@
     
     editAction.backgroundColor = [UIColor blueColor];
     
-    return @[deleteAction,editAction];
-
-    
-    
+    return @[deleteAction,editAction];    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell *cell=[self.tableView cellForRowAtIndexPath:indexPath];
+//    UITableViewCell *cell=[self.tableView cellForRowAtIndexPath:indexPath];
     
     
     

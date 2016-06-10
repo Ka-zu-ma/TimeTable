@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AttendanceCountViewController : UIViewController
+@interface AttendanceRecordViewController : UIViewController
+
+@property (strong,nonatomic) NSIndexPath *indexPath;
+
 @property (weak, nonatomic) IBOutlet UIButton *attendanceButton;
 @property (weak, nonatomic) IBOutlet UIButton *absenceButton;
 @property (weak, nonatomic) IBOutlet UIButton *lateButton;
+
+
 
 @end

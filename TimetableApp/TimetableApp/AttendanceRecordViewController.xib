@@ -5,11 +5,12 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AttendanceCountViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AttendanceRecordViewController">
             <connections>
                 <outlet property="absenceButton" destination="gXR-AH-0UM" id="rYn-PV-XYO"/>
                 <outlet property="attendanceButton" destination="R8R-4f-hnm" id="PYt-5r-IYS"/>
                 <outlet property="lateButton" destination="hiL-6h-2eX" id="008-bw-9jW"/>
+                <outlet property="tableView" destination="xOs-dg-WKu" id="iiD-fq-nEV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

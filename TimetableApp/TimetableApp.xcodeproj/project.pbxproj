@@ -10,9 +10,12 @@
 		30BCA07AA15E1F40C0CD871A /* libPods-TimetableApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA4C845B979D65C39A9A945 /* libPods-TimetableApp.a */; };
 		7DA3A5FF137A6ABB5F3C175E /* libPods-TimetableAppUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C01C16E9E3454CFF666D42 /* libPods-TimetableAppUITests.a */; };
 		9413A6D9918CA284DAC8C6B6 /* libPods-TimetableAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CBBB6BE59E829C5DFF72F6 /* libPods-TimetableAppTests.a */; };
-		9A386E281D072C03002CBB76 /* AttendanceCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A386E261D072C03002CBB76 /* AttendanceCountViewController.m */; };
-		9A386E291D072C03002CBB76 /* AttendanceCountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A386E271D072C03002CBB76 /* AttendanceCountViewController.xib */; };
+		9A386E281D072C03002CBB76 /* AttendanceRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A386E261D072C03002CBB76 /* AttendanceRecordViewController.m */; };
+		9A386E291D072C03002CBB76 /* AttendanceRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A386E271D072C03002CBB76 /* AttendanceRecordViewController.xib */; };
 		9A4CCD341D0479E1006380F2 /* AccessDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CCD331D0479E1006380F2 /* AccessDB.m */; };
+		9A6949821D09AA800014174C /* AttendanceRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6949801D09AA800014174C /* AttendanceRecordCell.m */; };
+		9A6949831D09AA800014174C /* AttendanceRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6949811D09AA800014174C /* AttendanceRecordCell.xib */; };
+		9A6949861D09C1800014174C /* AccessAttendanceRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6949851D09C1800014174C /* AccessAttendanceRecord.m */; };
 		9AA95AB91D003C3C0088014C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA95AB81D003C3C0088014C /* main.m */; };
 		9AA95ABC1D003C3C0088014C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA95ABB1D003C3C0088014C /* AppDelegate.m */; };
 		9AA95AC41D003C3C0088014C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AA95AC31D003C3C0088014C /* Assets.xcassets */; };
@@ -57,11 +60,16 @@
 		31C01C16E9E3454CFF666D42 /* libPods-TimetableAppUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TimetableAppUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D7AF8CC2A0DDBEEDD0ADD9 /* Pods-TimetableAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimetableAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimetableAppUITests/Pods-TimetableAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7FA4C845B979D65C39A9A945 /* libPods-TimetableApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TimetableApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A386E251D072C03002CBB76 /* AttendanceCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendanceCountViewController.h; sourceTree = "<group>"; };
-		9A386E261D072C03002CBB76 /* AttendanceCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendanceCountViewController.m; sourceTree = "<group>"; };
-		9A386E271D072C03002CBB76 /* AttendanceCountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendanceCountViewController.xib; sourceTree = "<group>"; };
+		9A386E251D072C03002CBB76 /* AttendanceRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendanceRecordViewController.h; sourceTree = "<group>"; };
+		9A386E261D072C03002CBB76 /* AttendanceRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendanceRecordViewController.m; sourceTree = "<group>"; };
+		9A386E271D072C03002CBB76 /* AttendanceRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendanceRecordViewController.xib; sourceTree = "<group>"; };
 		9A4CCD321D0479E1006380F2 /* AccessDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessDB.h; sourceTree = "<group>"; };
 		9A4CCD331D0479E1006380F2 /* AccessDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessDB.m; sourceTree = "<group>"; };
+		9A69497F1D09AA800014174C /* AttendanceRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendanceRecordCell.h; sourceTree = "<group>"; };
+		9A6949801D09AA800014174C /* AttendanceRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendanceRecordCell.m; sourceTree = "<group>"; };
+		9A6949811D09AA800014174C /* AttendanceRecordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendanceRecordCell.xib; sourceTree = "<group>"; };
+		9A6949841D09C1800014174C /* AccessAttendanceRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessAttendanceRecord.h; sourceTree = "<group>"; };
+		9A6949851D09C1800014174C /* AccessAttendanceRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessAttendanceRecord.m; sourceTree = "<group>"; };
 		9AA95AB41D003C3C0088014C /* TimetableApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimetableApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AA95AB81D003C3C0088014C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9AA95ABA1D003C3C0088014C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -164,6 +172,8 @@
 			children = (
 				9A4CCD321D0479E1006380F2 /* AccessDB.h */,
 				9A4CCD331D0479E1006380F2 /* AccessDB.m */,
+				9A6949841D09C1800014174C /* AccessAttendanceRecord.h */,
+				9A6949851D09C1800014174C /* AccessAttendanceRecord.m */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -254,9 +264,9 @@
 				9ABE98341D04526A00FD82ED /* RegisterClassViewController.h */,
 				9ABE98351D04526A00FD82ED /* RegisterClassViewController.m */,
 				9ABE98361D04526A00FD82ED /* RegisterClassViewController.xib */,
-				9A386E251D072C03002CBB76 /* AttendanceCountViewController.h */,
-				9A386E261D072C03002CBB76 /* AttendanceCountViewController.m */,
-				9A386E271D072C03002CBB76 /* AttendanceCountViewController.xib */,
+				9A386E251D072C03002CBB76 /* AttendanceRecordViewController.h */,
+				9A386E261D072C03002CBB76 /* AttendanceRecordViewController.m */,
+				9A386E271D072C03002CBB76 /* AttendanceRecordViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -280,6 +290,9 @@
 				9ABE982F1D041C6A00FD82ED /* ClassTableCell.h */,
 				9ABE98301D041C6A00FD82ED /* ClassTableCell.m */,
 				9ABE98311D041C6A00FD82ED /* ClassTableCell.xib */,
+				9A69497F1D09AA800014174C /* AttendanceRecordCell.h */,
+				9A6949801D09AA800014174C /* AttendanceRecordCell.m */,
+				9A6949811D09AA800014174C /* AttendanceRecordCell.xib */,
 			);
 			name = TableViewCell;
 			sourceTree = "<group>";
@@ -398,10 +411,11 @@
 				9AA95AC71D003C3C0088014C /* LaunchScreen.storyboard in Resources */,
 				9ABE98331D041C6A00FD82ED /* ClassTableCell.xib in Resources */,
 				9ABE98381D04526A00FD82ED /* RegisterClassViewController.xib in Resources */,
-				9A386E291D072C03002CBB76 /* AttendanceCountViewController.xib in Resources */,
+				9A386E291D072C03002CBB76 /* AttendanceRecordViewController.xib in Resources */,
 				9AA95B051D01A2140088014C /* memo in Resources */,
 				9AA95AF81D004A8F0088014C /* ClassListViewController.xib in Resources */,
 				9AA95AC41D003C3C0088014C /* Assets.xcassets in Resources */,
+				9A6949831D09AA800014174C /* AttendanceRecordCell.xib in Resources */,
 				9AA95B031D0192B00088014C /* DayOfWeekCell.xib in Resources */,
 				9AA95AF11D0046C10088014C /* HomeViewController.xib in Resources */,
 				9AA95AFD1D0050B70088014C /* ClassViewCell.xib in Resources */,
@@ -555,13 +569,15 @@
 				9ABE98321D041C6A00FD82ED /* ClassTableCell.m in Sources */,
 				9AA95ABC1D003C3C0088014C /* AppDelegate.m in Sources */,
 				9ABE98371D04526A00FD82ED /* RegisterClassViewController.m in Sources */,
-				9A386E281D072C03002CBB76 /* AttendanceCountViewController.m in Sources */,
+				9A386E281D072C03002CBB76 /* AttendanceRecordViewController.m in Sources */,
 				9AA95AF71D004A8F0088014C /* ClassListViewController.m in Sources */,
 				9AA95AB91D003C3C0088014C /* main.m in Sources */,
 				9A4CCD341D0479E1006380F2 /* AccessDB.m in Sources */,
 				9AA95B021D0192B00088014C /* DayOfWeekCell.m in Sources */,
 				9AA95AFC1D0050B70088014C /* ClassViewCell.m in Sources */,
+				9A6949821D09AA800014174C /* AttendanceRecordCell.m in Sources */,
 				9AA95AF01D0046C10088014C /* HomeViewController.m in Sources */,
+				9A6949861D09C1800014174C /* AccessAttendanceRecord.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
