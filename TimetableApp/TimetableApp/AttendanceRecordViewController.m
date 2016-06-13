@@ -12,6 +12,10 @@
 
 @interface AttendanceRecordViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+- (IBAction)tappedAttendanceButton:(id)sender;
+- (IBAction)tappedAbsenceButton:(id)sender;
+- (IBAction)tappedLateButton:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *countView;
 
 @end
 
@@ -48,21 +52,45 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"AttendanceRecordCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     //出席記録テーブル作成
     [AccessAttendanceRecord createAttendanceRecordTable];
     
     NSString *indexPathRowString=[NSString stringWithFormat:@"%ld",_indexPath.row];
     
-    //出欠カウント初期値設定
-    [AccessAttendanceRecord insertInitialValueCountUpRecordTable:indexPathRowString];
+    if (![AccessAttendanceRecord checkIndexPathExists:indexPathRowString]) {
+        
+        //出欠カウント初期値をDBに登録
+        [AccessAttendanceRecord insertInitialValueAttendanceRecordTable:indexPathRowString];
+    }
     
     //ある授業の出欠カウント取得
-    [AccessAttendanceRecord selectCountAtIndexPath:indexPathRowString];
+//    [AccessAttendanceRecord selectCountAtIndexPath:indexPathRowString];
+    
+    
+    
+    
     
     
     // Do any additional setup after loading the view from its nib.
 }
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    NSString *indexPathRowString=[NSString stringWithFormat:@"%ld",_indexPath.row];
+    
+    //出欠カウントボタンに値をセット
+    [_attendanceButton setTitle:[AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][0] forState:UIControlStateNormal];
+    
+    [_absenceButton setTitle:[AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][1] forState:UIControlStateNormal];
+    
+    [_lateButton setTitle:[AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][2] forState:UIControlStateNormal];
+    
+    
+}
+
+#pragma mark - Memory Management
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -108,6 +136,11 @@
     
 }
 
+//セクション高さ
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    return 30;
+}
 
 
 
@@ -129,4 +162,38 @@
     return 10;
 }
 
+//出席カウントを1アップ
+- (IBAction)tappedAttendanceButton:(id)sender {
+    
+    NSString *whichButton = @"出席ボタン";
+    
+    [AccessAttendanceRecord countUp:[NSString stringWithFormat:@"%ld",_indexPath.row] whichButton:whichButton];
+    
+    
+    [self loadView];
+    
+//    NSLog(@"おされた");
+    
+    
+}
+//欠席カウントを1アップ
+- (IBAction)tappedAbsenceButton:(id)sender {
+    
+     NSString *whichButton = @"欠席ボタン";
+    
+    [AccessAttendanceRecord countUp:[NSString stringWithFormat:@"%ld",_indexPath.row] whichButton:whichButton];
+    
+    
+    
+//    NSLog(@"欠席おされた");
+    
+}
+
+//遅刻カウントを1アップ
+- (IBAction)tappedLateButton:(id)sender {
+    
+     NSString *whichButton = @"遅刻ボタン";
+    [AccessAttendanceRecord countUp:[NSString stringWithFormat:@"%ld",_indexPath.row] whichButton:whichButton];
+    
+}
 @end

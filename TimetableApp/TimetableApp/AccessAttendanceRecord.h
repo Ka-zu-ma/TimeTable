@@ -13,8 +13,11 @@
 
 //+(NSArray *)selectAttendanceRecord:(NSString *)indexPathRow attendanceCount:(NSString *)attendanceCountString absenceCount:(NSString *)absenceCountString lateCount:(NSString *)lateCountString;
 
-+(void)insertInitialValueCountUpRecordTable:(NSString *)indexPathRow;
++(void)insertInitialValueAttendanceRecordTable:(NSString *)indexPathRow;
 
-+(NSArray *)selectCountAtIndexPath:(NSString *)indexPathRow;
++(NSArray *)selectCountAtIndexPathRow:(NSString *)indexPathRow;
 
++(BOOL)checkIndexPathExists:(NSString *)indexPathRow;
+
++(void)countUp:(NSString *)indexPathRow whichButton:(NSString *)whichButton;
 @end

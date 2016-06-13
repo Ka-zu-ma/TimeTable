@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="absenceButton" destination="gXR-AH-0UM" id="rYn-PV-XYO"/>
                 <outlet property="attendanceButton" destination="R8R-4f-hnm" id="PYt-5r-IYS"/>
+                <outlet property="countView" destination="G2T-uY-uiz" id="IRR-LJ-nbP"/>
                 <outlet property="lateButton" destination="hiL-6h-2eX" id="008-bw-9jW"/>
                 <outlet property="tableView" destination="xOs-dg-WKu" id="iiD-fq-nEV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -31,6 +32,9 @@
                             <state key="normal">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="tappedAbsenceButton:" destination="-1" eventType="touchUpInside" id="rC2-Bt-bsj"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R8R-4f-hnm">
                             <rect key="frame" x="15" y="17" width="70" height="70"/>
@@ -41,6 +45,9 @@
                             <state key="normal">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="tappedAttendanceButton:" destination="-1" eventType="touchUpInside" id="goB-nC-ocE"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiL-6h-2eX">
                             <rect key="frame" x="235" y="17" width="70" height="70"/>
@@ -51,6 +58,9 @@
                             <state key="normal">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="tappedLateButton:" destination="-1" eventType="touchUpInside" id="Uje-7W-VXc"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="出席" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbo-E2-mAr">
                             <rect key="frame" x="29" y="23" width="42" height="21"/>
