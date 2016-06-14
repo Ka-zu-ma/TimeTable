@@ -20,4 +20,13 @@
 +(BOOL)checkIndexPathExists:(NSString *)indexPathRow;
 
 +(void)countUp:(NSString *)indexPathRow whichButton:(NSString *)whichButton;
+
++(void)createDateAndAttendanceRecord;
+
++(void)registerDateAndAttendanceRecord:(NSString *)attendanceRecord indexPathRow:(NSString *)indexPathRow;
+
++(NSArray *)selectDateRecord:(NSString *)indexPathRow;
+
++(void)delete:(NSString *)date attendancerecord:(NSString *)attendancerecord indexPathRow:(NSString *)indexPathRow;
+
 @end

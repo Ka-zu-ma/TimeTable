@@ -11,6 +11,7 @@
 
 @implementation AccessAttendanceRecord
 
+//出欠記録テーブル作成
 +(void)createAttendanceRecordTable{
     
     FMDatabase *db=[AccessDB getdb];
@@ -145,12 +146,28 @@
 }
 
 //日付出欠テーブル作成
-+(void)createDateRecord{
++(void)createDateAndAttendanceRecord{
     
     FMDatabase *db=[AccessDB getdb];
     [db open];
     
     [db executeUpdate:@"CREATE TABLE IF NOT EXISTS date_record_table (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, attendancerecord TEXT, indexPathRow INTEGER);"];
+    
+    [db close];
+}
+
+//日付と出欠記録登録
++(void)registerDateAndAttendanceRecord:(NSString *)attendanceRecord indexPathRow:(NSString *)indexPathRow{
+    
+    NSDateFormatter *format=[[NSDateFormatter alloc]init];
+    [format setLocale:[[NSLocale alloc]initWithLocaleIdentifier:@"ja_JP"]];
+    [format setDateFormat:@"yyyy/MM/dd"];
+    NSString *stringTime=[format stringFromDate:[NSDate date]];
+    
+    FMDatabase *db=[AccessDB getdb];
+    [db open];
+
+    [db executeUpdate:@"INSERT INTO date_record_table (date, attendancerecord, indexPathRow) VALUES (?, ?, ?);",stringTime,attendanceRecord,indexPathRow];
     
     [db close];
 }
@@ -176,7 +193,17 @@
     
     return @[dates,attendanceRecord];
 }
-//日付取得し、出欠記録登録
+
+//出欠データを削除
++(void)delete:(NSString *)date attendancerecord:(NSString *)attendancerecord indexPathRow:(NSString *)indexPathRow{
+    
+    FMDatabase *db=[AccessDB getdb];
+    [db open];
+    
+    [db executeUpdate:@"DELETE FROM date_record_table WHERE date = ? AND attendancerecord = ? AND indexPathRow = ?",date,attendancerecord,indexPathRow];
+    
+    [db close];
+}
 
 
 @end

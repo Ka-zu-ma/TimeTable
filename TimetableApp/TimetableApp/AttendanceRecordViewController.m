@@ -17,6 +17,9 @@
 - (IBAction)tappedLateButton:(id)sender;
 @property (weak, nonatomic) IBOutlet UIView *countView;
 
+@property (strong,nonatomic) NSMutableArray *dates;
+@property (strong,nonatomic) NSMutableArray *attendanceRecord;
+
 @end
 
 @implementation AttendanceRecordViewController
@@ -68,11 +71,9 @@
     //ある授業の出欠カウント取得
 //    [AccessAttendanceRecord selectCountAtIndexPath:indexPathRowString];
     
-    
-    
-    
-    
-    
+    //出欠日付テーブル作成
+    [AccessAttendanceRecord createDateAndAttendanceRecord];
+
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -87,6 +88,12 @@
     
     [_lateButton setTitle:[AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][2] forState:UIControlStateNormal];
     
+    
+    //DBから出欠日付データ取得
+    _dates = [AccessAttendanceRecord selectDateRecord:indexPathRowString][0];
+    _attendanceRecord = [AccessAttendanceRecord selectDateRecord:indexPathRowString][1];
+    
+
     
 }
 
@@ -108,11 +115,24 @@
 
 -(NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    UITableViewCell *cell=[self.tableView cellForRowAtIndexPath:indexPath];
+    
+    NSString *indexPathString=[NSString stringWithFormat:@"%ld",(long)_indexPath.row];
+    
     //削除ボタン
     UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"delete" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
         
-//        UITableViewCell *cell=[self.tableView cellForRowAtIndexPath:indexPath];
+        //出欠データ削除
+        [AccessAttendanceRecord delete:cell.textLabel.text attendancerecord:cell.detailTextLabel.text indexPathRow:indexPathString];
         
+        if ([cell.detailTextLabel.text isEqual:@"出席"]) {
+        
+        
+        }
+        
+        [_dates removeObjectAtIndex:indexPath.row];
+        [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
         
         
     }];
@@ -151,15 +171,27 @@
     
     AttendanceRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.textLabel.text = @"日にち";
-    cell.detailTextLabel.text =@"出席状況";
+    cell.textLabel.text = _dates[indexPath.row];
+    cell.detailTextLabel.text = _attendanceRecord[indexPath.row];
+    
+    if ([_attendanceRecord[indexPath.row] isEqual:@"出席"]) {
+        
+        cell.detailTextLabel.textColor = [UIColor redColor];
+        
+    }else if ([_attendanceRecord[indexPath.row] isEqual:@"欠席"]){
+        
+        cell.detailTextLabel.textColor = [UIColor blueColor];
+        
+    }else{
+        cell.detailTextLabel.textColor = [UIColor greenColor];
+    }
     
     return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 10;
+    return _dates.count;
 }
 
 
@@ -169,12 +201,20 @@
     
     NSString *whichButton = @"出席ボタン";
     
-    
     [AccessAttendanceRecord countUp:[NSString stringWithFormat:@"%ld",_indexPath.row] whichButton:whichButton];
     
     NSString *indexPathRowString=[NSString stringWithFormat:@"%ld",_indexPath.row];
     
     [_attendanceButton setTitle:[AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][0] forState:UIControlStateNormal];
+    
+    //DBに出席日付登録
+    [AccessAttendanceRecord registerDateAndAttendanceRecord:@"出席" indexPathRow:indexPathRowString];
+    
+    _dates = [AccessAttendanceRecord selectDateRecord:indexPathRowString][0];
+    _attendanceRecord = [AccessAttendanceRecord selectDateRecord:indexPathRowString][1];
+    
+    [self.tableView reloadData];
+
     
 //    NSLog(@"おされた");
     
@@ -191,7 +231,13 @@
     
     [_absenceButton setTitle:[AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][1] forState:UIControlStateNormal];
     
+    //DBに欠席日付登録
+    [AccessAttendanceRecord registerDateAndAttendanceRecord:@"欠席" indexPathRow:indexPathRowString];
     
+    _dates = [AccessAttendanceRecord selectDateRecord:indexPathRowString][0];
+    _attendanceRecord = [AccessAttendanceRecord selectDateRecord:indexPathRowString][1];
+    [self.tableView reloadData];
+
     
 //    NSLog(@"欠席おされた");
     
@@ -207,5 +253,25 @@
     
     [_lateButton setTitle:[AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][2] forState:UIControlStateNormal];
     
+    //DBに遅刻日付登録
+    [AccessAttendanceRecord registerDateAndAttendanceRecord:@"遅刻" indexPathRow:indexPathRowString];
+    
+    _dates = [AccessAttendanceRecord selectDateRecord:indexPathRowString][0];
+    _attendanceRecord = [AccessAttendanceRecord selectDateRecord:indexPathRowString][1];
+    [self.tableView reloadData];
+
 }
+
+//-(NSString *)getToday{
+//    
+//    NSDateFormatter *format=[[NSDateFormatter alloc]init];
+//    [format setLocale:[[NSLocale alloc]initWithLocaleIdentifier:@"ja_JP"]];
+//    [format setDateFormat:@"yyyy/MM/dd"];
+//    NSString *stringTime=[format stringFromDate:[NSDate date]];
+//    return stringTime;
+//}
+
+
+
+
 @end

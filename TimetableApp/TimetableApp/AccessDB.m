@@ -148,7 +148,6 @@
     
     [db executeUpdate:@"DELETE FROM classtable WHERE class = ? AND teacher = ?",classNameString,teacherNameString];
     
-    
     [db close];
 }
 
