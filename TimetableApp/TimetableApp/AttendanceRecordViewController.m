@@ -162,15 +162,19 @@
     return 10;
 }
 
+
+
 //出席カウントを1アップ
 - (IBAction)tappedAttendanceButton:(id)sender {
     
     NSString *whichButton = @"出席ボタン";
     
+    
     [AccessAttendanceRecord countUp:[NSString stringWithFormat:@"%ld",_indexPath.row] whichButton:whichButton];
     
+    NSString *indexPathRowString=[NSString stringWithFormat:@"%ld",_indexPath.row];
     
-    [self loadView];
+    [_attendanceButton setTitle:[AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][0] forState:UIControlStateNormal];
     
 //    NSLog(@"おされた");
     
@@ -183,6 +187,10 @@
     
     [AccessAttendanceRecord countUp:[NSString stringWithFormat:@"%ld",_indexPath.row] whichButton:whichButton];
     
+    NSString *indexPathRowString=[NSString stringWithFormat:@"%ld",_indexPath.row];
+    
+    [_absenceButton setTitle:[AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][1] forState:UIControlStateNormal];
+    
     
     
 //    NSLog(@"欠席おされた");
@@ -194,6 +202,10 @@
     
      NSString *whichButton = @"遅刻ボタン";
     [AccessAttendanceRecord countUp:[NSString stringWithFormat:@"%ld",_indexPath.row] whichButton:whichButton];
+    
+    NSString *indexPathRowString=[NSString stringWithFormat:@"%ld",_indexPath.row];
+    
+    [_lateButton setTitle:[AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][2] forState:UIControlStateNormal];
     
 }
 @end

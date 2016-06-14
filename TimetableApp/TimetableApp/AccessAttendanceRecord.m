@@ -144,5 +144,39 @@
 
 }
 
+//日付出欠テーブル作成
++(void)createDateRecord{
+    
+    FMDatabase *db=[AccessDB getdb];
+    [db open];
+    
+    [db executeUpdate:@"CREATE TABLE IF NOT EXISTS date_record_table (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, attendancerecord TEXT, indexPathRow INTEGER);"];
+    
+    [db close];
+}
+
+//日付出欠データ取得
++(NSArray *)selectDateRecord:(NSString *)indexPathRow{
+    
+    NSMutableArray *dates=[[NSMutableArray alloc]init];
+    NSMutableArray *attendanceRecord=[[NSMutableArray alloc]init];
+    
+    FMDatabase *db=[AccessDB getdb];
+    [db open];
+    
+    FMResultSet *results=[db executeQuery:@"SELECT date, attendancerecord FROM date_record_table WHERE indexPathRow=?;",indexPathRow];
+    
+    while ([results next]) {
+        [dates addObject:[results stringForColumn:@"date"]];
+        [attendanceRecord addObject:[results stringForColumn:@"attendancerecord"]];
+        
+    }
+    
+    [db close];
+    
+    return @[dates,attendanceRecord];
+}
+//日付取得し、出欠記録登録
+
 
 @end
