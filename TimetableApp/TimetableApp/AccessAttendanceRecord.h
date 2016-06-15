@@ -29,4 +29,6 @@
 
 +(void)delete:(NSString *)date attendancerecord:(NSString *)attendancerecord indexPathRow:(NSString *)indexPathRow;
 
++(void)updateCountDown:(NSString *)whichLabel indexPathRow:(NSString *)indexPathRow;
+
 @end

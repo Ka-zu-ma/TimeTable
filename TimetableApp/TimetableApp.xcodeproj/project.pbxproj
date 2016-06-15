@@ -35,6 +35,7 @@
 		9ABE98331D041C6A00FD82ED /* ClassTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ABE98311D041C6A00FD82ED /* ClassTableCell.xib */; };
 		9ABE98371D04526A00FD82ED /* RegisterClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABE98351D04526A00FD82ED /* RegisterClassViewController.m */; };
 		9ABE98381D04526A00FD82ED /* RegisterClassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ABE98361D04526A00FD82ED /* RegisterClassViewController.xib */; };
+		9AC75F9B1D109EEA00A1531D /* AccessHomeClassDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC75F9A1D109EEA00A1531D /* AccessHomeClassDB.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,8 @@
 		9ABE98341D04526A00FD82ED /* RegisterClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterClassViewController.h; sourceTree = "<group>"; };
 		9ABE98351D04526A00FD82ED /* RegisterClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterClassViewController.m; sourceTree = "<group>"; };
 		9ABE98361D04526A00FD82ED /* RegisterClassViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterClassViewController.xib; sourceTree = "<group>"; };
+		9AC75F991D109EEA00A1531D /* AccessHomeClassDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessHomeClassDB.h; sourceTree = "<group>"; };
+		9AC75F9A1D109EEA00A1531D /* AccessHomeClassDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessHomeClassDB.m; sourceTree = "<group>"; };
 		C1CBBB6BE59E829C5DFF72F6 /* libPods-TimetableAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TimetableAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1E51DBE3AF3950DC263C054 /* Pods-TimetableAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimetableAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimetableAppTests/Pods-TimetableAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE524C57176221C3A92167F2 /* Pods-TimetableApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimetableApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimetableApp/Pods-TimetableApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +177,8 @@
 				9A4CCD331D0479E1006380F2 /* AccessDB.m */,
 				9A6949841D09C1800014174C /* AccessAttendanceRecord.h */,
 				9A6949851D09C1800014174C /* AccessAttendanceRecord.m */,
+				9AC75F991D109EEA00A1531D /* AccessHomeClassDB.h */,
+				9AC75F9A1D109EEA00A1531D /* AccessHomeClassDB.m */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -569,6 +574,7 @@
 				9ABE98321D041C6A00FD82ED /* ClassTableCell.m in Sources */,
 				9AA95ABC1D003C3C0088014C /* AppDelegate.m in Sources */,
 				9ABE98371D04526A00FD82ED /* RegisterClassViewController.m in Sources */,
+				9AC75F9B1D109EEA00A1531D /* AccessHomeClassDB.m in Sources */,
 				9A386E281D072C03002CBB76 /* AttendanceRecordViewController.m in Sources */,
 				9AA95AF71D004A8F0088014C /* ClassListViewController.m in Sources */,
 				9AA95AB91D003C3C0088014C /* main.m in Sources */,

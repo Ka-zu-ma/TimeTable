@@ -10,6 +10,7 @@
 #import "ClassTableCell.h"
 #import "RegisterClassViewController.h"
 #import "AccessDB.h"
+#import "AccessHomeClassDB.h"
 
 @interface ClassListViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -125,8 +126,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-//    UITableViewCell *cell=[self.tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell *cell=[self.tableView cellForRowAtIndexPath:indexPath];
     
+    
+    
+    [AccessHomeClassDB insertHomeClassTable:cell.textLabel.text teacherName:cell.detailTextLabel.text classroomName:[AccessDB selectClassroomOfClass:cell.textLabel.text teacherName:cell.detailTextLabel.text] indexPathRow:[NSString stringWithFormat:@"%ld",(long)_indexPath.row]];
     
     
     [self.navigationController popViewControllerAnimated:YES];

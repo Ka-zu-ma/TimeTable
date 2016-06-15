@@ -197,6 +197,8 @@
 //出欠データを削除
 +(void)delete:(NSString *)date attendancerecord:(NSString *)attendancerecord indexPathRow:(NSString *)indexPathRow{
     
+    
+    
     FMDatabase *db=[AccessDB getdb];
     [db open];
     
@@ -205,5 +207,45 @@
     [db close];
 }
 
+//カウント1下げる
++(void)updateCountDown:(NSString *)whichLabel indexPathRow:(NSString *)indexPathRow{
+    
+    NSString *sql;
+    NSInteger number;
+    
+    //    NSLog(@"whichボタン:%@",whichButton);
+    
+    if ([whichLabel  isEqual: @"出席"]) {
+        
+        sql = @"UPDATE attendance_record_table set attendancecount = ? WHERE indexPathRow = ?";
+        number = 0;
+        
+    }else if([whichLabel isEqual: @"欠席"]){
+        
+        sql = @"UPDATE attendance_record_table set absencecount = ? WHERE indexPathRow = ?";
+        number = 1;
+        
+    }else if ([whichLabel isEqual:@"遅刻"]){
+        
+        sql = @"UPDATE attendance_record_table set latecount = ? WHERE indexPathRow = ?";
+        number = 2;
+    }
+    NSString *countBeforeUpString = [AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRow][number];
+    
+    NSInteger countAfterUp = countBeforeUpString.intValue - 1;
+    
+    NSString *countAfterUpString = [NSString stringWithFormat:@"%ld",(long)countAfterUp];
+    
+    
+    //    NSLog(@"どのボタンか:%@",whichButton);
+    
+    FMDatabase *db = [AccessDB getdb];
+    [db open];
+    
+    [db executeUpdate:sql,countAfterUpString,indexPathRow];
+    
+    [db close];
+    
+}
 
 @end

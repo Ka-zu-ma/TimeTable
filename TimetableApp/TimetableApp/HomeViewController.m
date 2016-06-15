@@ -11,6 +11,7 @@
 #import "DayOfWeekCell.h"
 #import "ClassListViewController.h"
 #import "AttendanceRecordViewController.h"
+#import "AccessHomeClassDB.h"
 
 @interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -37,6 +38,9 @@
     [_collectionView registerNib:[UINib nibWithNibName:@"DayOfWeekCell" bundle:nil] forCellWithReuseIdentifier:@"DayOfWeekCell"];
     
     self.navigationItem.title = @"時間割表";
+    
+    //ホーム画面の授業を登録しておくDBテーブルを作成
+    [AccessHomeClassDB createHomeClassTable];
     
 
     // Do any additional setup after loading the view from its nib.
@@ -75,7 +79,7 @@
 
         
             ClassListViewController *viewController =[[ClassListViewController alloc] init];
-            
+            viewController.indexPath = indexPath;
             
             [self.navigationController pushViewController:viewController animated:YES];
         }

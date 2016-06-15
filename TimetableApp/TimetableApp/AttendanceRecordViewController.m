@@ -117,18 +117,19 @@
     
     UITableViewCell *cell=[self.tableView cellForRowAtIndexPath:indexPath];
     
-    NSString *indexPathString=[NSString stringWithFormat:@"%ld",(long)_indexPath.row];
+    NSString *indexPathRowString=[NSString stringWithFormat:@"%ld",(long)_indexPath.row];
     
     //削除ボタン
     UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"delete" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
         
         //出欠データ削除
-        [AccessAttendanceRecord delete:cell.textLabel.text attendancerecord:cell.detailTextLabel.text indexPathRow:indexPathString];
+        [AccessAttendanceRecord delete:cell.textLabel.text attendancerecord:cell.detailTextLabel.text indexPathRow:indexPathRowString];
         
-        if ([cell.detailTextLabel.text isEqual:@"出席"]) {
+        //出欠カウント1下げる。このときに同じ条件のデータが複数ある場合、複数消えてしまうのでそれに対応。
+        [AccessAttendanceRecord updateCountDown:cell.detailTextLabel.text indexPathRow:indexPathRowString];
         
         
-        }
+        
         
         [_dates removeObjectAtIndex:indexPath.row];
         [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];

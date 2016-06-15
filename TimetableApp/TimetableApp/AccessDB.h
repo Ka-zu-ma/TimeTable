@@ -23,4 +23,6 @@
 +(BOOL)checkClassExists:(NSString *)classNameString teacherName:(NSString *)teacherNameString classroomName:(NSString *)classroomNameString;
 +(void)updateClass:(NSString *)classNameTextField teacherNameTextField:(NSString *)teacherNameTextField  classroomNameTextField:(NSString *)classroomNameTextField classNameString:(NSString *)classNameString teacherNameString:(NSString *)teacherNameString classroomNameString:(NSString *)classroomNameString;
 
++(NSString *)selectClassroomOfClass:(NSString *)classNameString teacherName:(NSString *)teacherNameString;
+
 @end

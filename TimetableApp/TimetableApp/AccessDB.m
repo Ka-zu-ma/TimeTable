@@ -151,5 +151,28 @@
     [db close];
 }
 
+//ある授業の教室名を取得
++(NSString *)selectClassroomOfClass:(NSString *)classNameString teacherName:(NSString *)teacherNameString{
+    
+    NSString *cellclassroomNameString;
+    
+    FMDatabase *db = [AccessDB getdb];
+    
+    [db open];
+    
+    FMResultSet *results=[db executeQuery:@"SELECT classroom FROM classtable WHERE class = ? AND teacher = ?;",classNameString,teacherNameString];
+    
+    while ([results next]) {
+        cellclassroomNameString=[results stringForColumn:@"classroom"];
+    }
+    
+    [db close];
+    
+    NSLog(@"教室:%@",cellclassroomNameString);
+    
+    return cellclassroomNameString;
+}
+
+
 
 @end
