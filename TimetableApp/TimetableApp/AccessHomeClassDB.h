@@ -13,5 +13,6 @@
 +(void)createHomeClassTable;
 +(void)insertHomeClassTable:(NSString *)classNameString teacherName:(NSString *)teacherNameString classroomName:(NSString *)classroomNameString indexPathRow:(NSString *)indexPathRowString;
 
++(NSArray *)selectHomeClassTable;
 
 @end

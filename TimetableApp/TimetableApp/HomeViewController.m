@@ -14,14 +14,19 @@
 #import "AccessHomeClassDB.h"
 
 @interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
 
 @property NSArray *weeks;
 @property NSArray *classTimes;
 
+@property (strong,nonatomic) NSMutableDictionary *classesAndIndexPathRows;
+@property (strong,nonatomic) NSMutableDictionary *classroomsAndIndexPathRows;
+
 @end
 
 @implementation HomeViewController
+
+#pragma mark - ViewLifeCycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,6 +50,19 @@
 
     // Do any additional setup after loading the view from its nib.
 }
+
+//-(void)viewWillAppear:(BOOL)animated{
+//    
+//    
+//    
+//
+//
+//    [self.collectionView reloadData];
+//
+//    [super viewWillAppear:animated];
+//    
+//}
+
 
 
 
@@ -90,6 +108,17 @@
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     
+    _classesAndIndexPathRows = [AccessHomeClassDB selectHomeClassTable][0];
+    _classroomsAndIndexPathRows = [AccessHomeClassDB selectHomeClassTable][1];
+    
+    for (id key in [_classesAndIndexPathRows keyEnumerator]) {
+        NSLog(@"Key:%@ Value:%@", key, [_classesAndIndexPathRows valueForKey:key]);
+    }
+
+    for (id key in [_classroomsAndIndexPathRows keyEnumerator]) {
+        NSLog(@"Key:%@ Value:%@", key, [_classroomsAndIndexPathRows valueForKey:key]);
+    }
+
     return 2;
 }
 
@@ -141,7 +170,26 @@
         cell.classroomLabel.text = @"";
         cell.classTimeLabel.text = _classTimes[(indexPath.row) / (_weeks.count + 1)];
         
+        return cell;
+        
     }
+    
+    cell.classTimeLabel.text=@"";
+    
+    if ([_classesAndIndexPathRows.allKeys containsObject:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]){
+        
+        NSLog(@"あいうえお");
+        
+        cell.classLabel.text = (NSString *)[_classesAndIndexPathRows objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+        cell.classroomLabel.text = [_classroomsAndIndexPathRows objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+        
+        NSLog(@"%@",[_classesAndIndexPathRows objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]);
+        
+        return cell;
+        
+    }
+//    cell.classLabel.text=@"";
+//    cell.classroomLabel.text=@"";
     
     return cell;
     

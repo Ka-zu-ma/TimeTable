@@ -27,10 +27,30 @@
     FMDatabase *db=[AccessDB getdb];
     [db open];
     
-    [db executeUpdate:@"INSERT INTO home_class_table (class, teacher, classroom, indexPathRow) VALUES  (?, ?, ?, ?);",classNameString,teacherNameString,classroomNameString,indexPathRowString];
+    [db executeUpdate:@"INSERT INTO home_class_table(class, teacher, classroom, indexPathRow) VALUES  (?, ?, ?, ?);",classNameString,teacherNameString,classroomNameString,indexPathRowString];
     
     [db close];
 }
 
++(NSArray *)selectHomeClassTable{
+    
+    NSMutableDictionary *classesAndIndexPathRows = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *classroomsAndIndexPathRows = [[NSMutableDictionary alloc] init];
+    
+    FMDatabase *db=[AccessDB getdb];
+    [db open];
+    
+    FMResultSet *results=[db executeQuery:@"SELECT class, classroom, indexPathRow FROM home_class_table;"];
+    
+    while ([results next]) {
+        
+        [classesAndIndexPathRows setObject:[results stringForColumn:@"class"] forKey:[results stringForColumn:@"indexPathRow"]];
+        [classroomsAndIndexPathRows setObject:[results stringForColumn:@"classroom"] forKey:[results stringForColumn:@"indexPathRow"]];
+    }
+    
+    [db close];
+    
+    return @[classesAndIndexPathRows,classroomsAndIndexPathRows];
+}
 
 @end

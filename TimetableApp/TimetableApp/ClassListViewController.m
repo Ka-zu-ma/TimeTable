@@ -11,6 +11,7 @@
 #import "RegisterClassViewController.h"
 #import "AccessDB.h"
 #import "AccessHomeClassDB.h"
+#import "HomeViewController.h"
 
 @interface ClassListViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -131,6 +132,14 @@
     
     
     [AccessHomeClassDB insertHomeClassTable:cell.textLabel.text teacherName:cell.detailTextLabel.text classroomName:[AccessDB selectClassroomOfClass:cell.textLabel.text teacherName:cell.detailTextLabel.text] indexPathRow:[NSString stringWithFormat:@"%ld",(long)_indexPath.row]];
+    
+//    NSArray *allControllers = self.navigationController.viewControllers;
+//    NSInteger target = [allControllers count] - 2;
+//    HomeViewController *parent = [allControllers objectAtIndex:target];
+//    [parent.collectionView reloadSections:[NSIndexSet indexSetWithIndex:_indexPath.section]];
+    
+    
+
     
     
     [self.navigationController popViewControllerAnimated:YES];

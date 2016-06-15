@@ -168,7 +168,7 @@
     
     [db close];
     
-    NSLog(@"教室:%@",cellclassroomNameString);
+//    NSLog(@"教室:%@",cellclassroomNameString);
     
     return cellclassroomNameString;
 }
