@@ -161,8 +161,9 @@
     ClassViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ClassViewCell" forIndexPath:indexPath];
     
     
-    cell.backgroundColor=[UIColor whiteColor];
+    cell.backgroundColor = [UIColor whiteColor];
     cell.classTimeLabel.textColor = [UIColor blackColor];
+    cell.classLabel.textColor = [UIColor blackColor];
     
     if(indexPath.row % (_weeks.count + 1) == 0){
         
@@ -174,25 +175,26 @@
         
     }
     
-    cell.classTimeLabel.text=@"";
+    cell.classTimeLabel.text = @"";
     
-    if ([_classesAndIndexPathRows.allKeys containsObject:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]){
-        
-        NSLog(@"あいうえお");
-        
-        cell.classLabel.text = (NSString *)[_classesAndIndexPathRows objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
-        cell.classroomLabel.text = [_classroomsAndIndexPathRows objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
-        
-        NSLog(@"%@",[_classesAndIndexPathRows objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]);
-        
-        return cell;
-        
-    }
+    cell.classLabel.text = @"いいいい";
+    
+//    if ([_classesAndIndexPathRows.allKeys containsObject:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]){
+//        
+//        NSLog(@"あいうえお");
+//        
+////        cell.classLabel.text = (NSString *)[_classesAndIndexPathRows objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+//        cell.classroomLabel.text = (NSString *)[_classroomsAndIndexPathRows objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+//        
+//        NSLog(@"やっほー:%@",[_classesAndIndexPathRows objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]);
+//        
+//        return cell;
+//    }
+    
 //    cell.classLabel.text=@"";
 //    cell.classroomLabel.text=@"";
     
     return cell;
-    
 }
 
 #pragma mark - CollectionView Layout

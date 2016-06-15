@@ -62,24 +62,6 @@
     
 }
 
-//+(NSArray *)selectAttendanceRecord:(NSString *)indexPathRow attendanceCount:(NSString *)attendanceCountString absenceCount:(NSString *)absenceCountString lateCount:(NSString *)lateCountString{
-//    
-//    FMDatabase *db=[AccessDB getdb];
-//    [db open];
-//    
-//    FMResultSet *results=[db executeQuery:@"SELECT attendancecount, absencecount ,latecount FROM attendance_record_table WHERE indexPath = ?;",indexPathRow];
-//    
-//    while ([results next]) {
-//        attendanceCountString=[results stringForColumn:@"attendancecount"];
-//        absenceCountString=[results stringForColumn:@"absencecount"];
-//        lateCountString=[results stringForColumn:@"latecount"];
-//    }
-//    
-//    [db close];
-//    
-//    return @[attendanceCountString,absenceCountString,lateCountString];
-//}
-
 //ある授業の出欠カウントを取得
 +(NSArray *)selectCountAtIndexPathRow:(NSString *)indexPathRow{
     
@@ -143,6 +125,21 @@
     
     [db close];
 
+}
+
+//出席、欠席、遅刻カウントのうち、どれか1アップし、どれか1ダウン
++(void)update:(NSString *)attendanceRecordCountUp attendanceRecordCountDown:(NSString *)attendanceRecordCountDown  indexPathRow:(NSString *)indexPathRowString{
+    
+    FMDatabase *db = [AccessDB getdb];
+    [db open];
+    
+    
+    
+//    [db executeUpdate:sql,countAfterUpString,indexPathRow];
+    
+    [db close];
+    
+    
 }
 
 //日付出欠テーブル作成
@@ -243,6 +240,18 @@
     [db open];
     
     [db executeUpdate:sql,countAfterUpString,indexPathRow];
+    
+    [db close];
+    
+}
+
+//日付、出欠記録を更新
++(void)update:(NSString *)dateAfterEdit attendanceRecordAfterEdit:(NSString *)attendanceRecordAfterEdit dateString:(NSString *)dateString attendanceRecordString:(NSString *)attendanceRecordString indexPathRow:(NSString *)indexPathRowString{
+    
+    FMDatabase *db = [AccessDB getdb];
+    [db open];
+    
+    [db executeUpdate:@"UPDATE date_record_table SET date = ?, attendancerecord = ? WHERE date = ? AND attendancerecord = ? AND indexPathRow = ?;",dateAfterEdit,attendanceRecordAfterEdit,dateString,attendanceRecordString,indexPathRowString];
     
     [db close];
     

@@ -9,6 +9,7 @@
 #import "AttendanceRecordViewController.h"
 #import "AttendanceRecordCell.h"
 #import "AccessAttendanceRecord.h"
+#import "EditDateAndAttendaceRecordViewController.h"
 
 @interface AttendanceRecordViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -141,12 +142,16 @@
     //編集ボタン
     UITableViewRowAction *editAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"edit" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
         
-//        RegisterClassViewController *viewController = [[RegisterClassViewController alloc] init];
-        
-//        UITableViewCell *cell=[self.tableView cellForRowAtIndexPath:indexPath];
+        EditDateAndAttendaceRecordViewController *viewController = [[EditDateAndAttendaceRecordViewController alloc] init];
         
         
-//        [self.navigationController pushViewController:viewController animated:YES];
+        
+        viewController.dateString = cell.textLabel.text;
+        viewController.attendanceRecordString = cell.detailTextLabel.text;
+        viewController.indexPath = _indexPath;
+        
+        
+        [self.navigationController pushViewController:viewController animated:YES];
         
     }];
     

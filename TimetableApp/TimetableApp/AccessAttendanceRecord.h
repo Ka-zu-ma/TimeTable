@@ -31,4 +31,6 @@
 
 +(void)updateCountDown:(NSString *)whichLabel indexPathRow:(NSString *)indexPathRow;
 
++(void)update:(NSString *)dateAfterEdit attendanceRecordAfterEdit:(NSString *)attendanceRecordAfterEdit dateString:(NSString *)dateString attendanceRecordString:(NSString *)attendanceRecordString indexPathRow:(NSString *)indexPathRowString;
+
 @end

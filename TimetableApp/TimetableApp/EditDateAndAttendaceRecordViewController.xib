@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditDateAndAttendaceRecordViewController">
+            <connections>
+                <outlet property="datePicker" destination="xEG-E8-4da" id="Ibc-Ho-bSd"/>
+                <outlet property="segmentedControl" destination="Fo9-jW-sXY" id="3K6-fh-sfn"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="xEG-E8-4da">
+                    <rect key="frame" x="0.0" y="128" width="320" height="216"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="216" id="Z7M-rp-f3v"/>
+                    </constraints>
+                    <date key="date" timeIntervalSinceReferenceDate="487704336.076554">
+                        <!--2016-06-15 17:25:36 +0000-->
+                    </date>
+                    <connections>
+                        <action selector="changeDatePicker:" destination="-1" eventType="valueChanged" id="6uv-MN-UbL"/>
+                    </connections>
+                </datePicker>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="出席状況" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="duQ-PH-aKd">
+                    <rect key="frame" x="113" y="363" width="94" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="ejr-cb-Iv5"/>
+                        <constraint firstAttribute="width" constant="94" id="pdh-hE-qdW"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Fo9-jW-sXY">
+                    <rect key="frame" x="35" y="394" width="251" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="3Lq-sB-x4Q"/>
+                        <constraint firstAttribute="width" constant="251" id="XPQ-fq-jzs"/>
+                    </constraints>
+                    <segments>
+                        <segment title="出席"/>
+                        <segment title="欠席"/>
+                        <segment title="遅刻"/>
+                    </segments>
+                </segmentedControl>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYX-5t-Z3G">
+                    <rect key="frame" x="130" y="528" width="61" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="61" id="3eO-9O-fOd"/>
+                        <constraint firstAttribute="height" constant="30" id="Iqy-z9-bMm"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="更新"/>
+                    <connections>
+                        <action selector="tappedUpdateButton:" destination="-1" eventType="touchUpInside" id="cNv-rF-xJb"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日付" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdz-Ec-bZ0">
+                    <rect key="frame" x="139" y="97" width="42" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="Q3E-GF-uYo"/>
+                        <constraint firstAttribute="height" constant="21" id="tXn-OS-JAB"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Fo9-jW-sXY" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="0SN-dB-M57"/>
+                <constraint firstItem="xEG-E8-4da" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6OH-B8-v0P"/>
+                <constraint firstItem="duQ-PH-aKd" firstAttribute="top" secondItem="xEG-E8-4da" secondAttribute="bottom" constant="19" id="78b-cf-Bbe"/>
+                <constraint firstItem="tdz-Ec-bZ0" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="CGJ-e8-qEm"/>
+                <constraint firstItem="Fo9-jW-sXY" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="FNq-rM-uTb"/>
+                <constraint firstItem="tdz-Ec-bZ0" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="HOV-bk-Qs0"/>
+                <constraint firstItem="duQ-PH-aKd" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="JCN-SA-EjZ"/>
+                <constraint firstItem="xEG-E8-4da" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="JFe-Fn-dfh"/>
+                <constraint firstAttribute="trailing" secondItem="xEG-E8-4da" secondAttribute="trailing" id="QNx-a8-itx"/>
+                <constraint firstItem="LYX-5t-Z3G" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Ve2-UQ-FO3"/>
+                <constraint firstItem="xEG-E8-4da" firstAttribute="top" secondItem="tdz-Ec-bZ0" secondAttribute="bottom" constant="10" id="edu-Ke-zju"/>
+                <constraint firstItem="tdz-Ec-bZ0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="97" id="kNp-8J-2cm"/>
+                <constraint firstItem="duQ-PH-aKd" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qij-Ns-Ajf"/>
+                <constraint firstAttribute="bottom" secondItem="LYX-5t-Z3G" secondAttribute="bottom" constant="10" id="tAw-on-62O"/>
+                <constraint firstItem="Fo9-jW-sXY" firstAttribute="top" secondItem="duQ-PH-aKd" secondAttribute="bottom" constant="10" id="uxq-k8-B4a"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="441" y="340"/>
+        </view>
+    </objects>
+</document>

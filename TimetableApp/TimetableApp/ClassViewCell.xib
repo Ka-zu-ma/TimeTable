@@ -56,9 +56,9 @@
             </constraints>
             <size key="customSize" width="250" height="250"/>
             <connections>
-                <outlet property="classLabel" destination="59h-Gg-JgX" id="HsL-xz-vJE"/>
-                <outlet property="classTimeLabel" destination="cKt-3m-cUn" id="skc-Lg-xRH"/>
-                <outlet property="classroomLabel" destination="xhq-U1-GSc" id="TX3-U0-Ae2"/>
+                <outlet property="classLabel" destination="59h-Gg-JgX" id="3FC-wD-hZc"/>
+                <outlet property="classTimeLabel" destination="cKt-3m-cUn" id="Q47-ee-s1T"/>
+                <outlet property="classroomLabel" destination="xhq-U1-GSc" id="HUB-ow-nIg"/>
             </connections>
             <point key="canvasLocation" x="419" y="341"/>
         </collectionViewCell>

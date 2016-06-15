@@ -37,6 +37,10 @@
     _teacherTextField.text = _teacherNameString;
     _classroomTextField.text = _classroomNameString;
     
+    // 背景をクリックしたら、キーボードを隠す
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeSoftKeyboard)];
+    [self.view addGestureRecognizer:gestureRecognizer];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -45,15 +49,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)closeSoftKeyboard {
+    
+    [self.view endEditing: YES];
 }
-*/
 
 - (IBAction)tapRegisterButton:(id)sender {
     

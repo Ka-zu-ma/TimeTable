@@ -133,10 +133,10 @@
     
     [AccessHomeClassDB insertHomeClassTable:cell.textLabel.text teacherName:cell.detailTextLabel.text classroomName:[AccessDB selectClassroomOfClass:cell.textLabel.text teacherName:cell.detailTextLabel.text] indexPathRow:[NSString stringWithFormat:@"%ld",(long)_indexPath.row]];
     
-//    NSArray *allControllers = self.navigationController.viewControllers;
-//    NSInteger target = [allControllers count] - 2;
-//    HomeViewController *parent = [allControllers objectAtIndex:target];
-//    [parent.collectionView reloadSections:[NSIndexSet indexSetWithIndex:_indexPath.section]];
+    NSArray *allControllers = self.navigationController.viewControllers;
+    NSInteger target = [allControllers count] - 2;
+    HomeViewController *parent = [allControllers objectAtIndex:target];
+    [parent.collectionView reloadSections:[NSIndexSet indexSetWithIndex:_indexPath.section]];
     
     
 
