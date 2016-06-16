@@ -94,6 +94,8 @@
     _dates = [AccessAttendanceRecord selectDateRecord:indexPathRowString][0];
     _attendanceRecord = [AccessAttendanceRecord selectDateRecord:indexPathRowString][1];
     
+    [self.tableView reloadData];
+    
 
     
 }

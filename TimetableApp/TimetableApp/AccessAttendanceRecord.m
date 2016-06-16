@@ -22,7 +22,7 @@
     [db close];
 }
 
-//ある授業のindexPathがあるかチェック
+//ある授業のindexPathRowがあるかチェック
 +(BOOL)checkIndexPathExists:(NSString *)indexPathRow{
     
     BOOL exists = YES;
@@ -44,7 +44,7 @@
         exists = NO;
     }
     
-    NSLog(@"indexpathRowあるか:%d",exists);
+//    NSLog(@"indexpathRowあるか:%d",exists);
     
     return exists;
 
@@ -130,6 +130,40 @@
 //出席、欠席、遅刻カウントのうち、どれか1アップし、どれか1ダウン
 +(void)update:(NSString *)attendanceRecordCountUp attendanceRecordCountDown:(NSString *)attendanceRecordCountDown  indexPathRow:(NSString *)indexPathRowString{
     
+    //ある授業の各カウントを取得
+    NSString *attendanceCountString = [AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][0];
+    NSString *absenceCountString = [AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][1];
+    NSString *lateCountString = [AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][2];
+    
+    
+    if ([attendanceRecordCountUp isEqual:@"出席"]) {
+        
+        
+        
+        if ([attendanceRecordCountDown isEqual:@"欠席"]) {
+            
+        }else if ([attendanceRecordCountDown isEqual:@"遅刻"]){
+            
+        }
+        
+    } else if ([attendanceRecordCountUp isEqual:@"欠席"]){
+        
+        if ([attendanceRecordCountDown isEqual:@"出席"]) {
+            
+        }else if ([attendanceRecordCountDown isEqual:@"遅刻"]){
+            
+        }
+    }else{
+        
+        if ([attendanceRecordCountDown isEqual:@"出席"]) {
+            
+        }else if ([attendanceRecordCountDown isEqual:@"欠席"]){
+            
+        }
+    }
+    
+    
+    
     FMDatabase *db = [AccessDB getdb];
     [db open];
     
@@ -138,8 +172,6 @@
 //    [db executeUpdate:sql,countAfterUpString,indexPathRow];
     
     [db close];
-    
-    
 }
 
 //日付出欠テーブル作成
