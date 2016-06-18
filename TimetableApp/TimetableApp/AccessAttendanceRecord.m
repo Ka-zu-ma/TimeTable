@@ -131,9 +131,9 @@
 +(void)update:(NSString *)attendanceRecordCountUp attendanceRecordCountDown:(NSString *)attendanceRecordCountDown  indexPathRow:(NSString *)indexPathRowString{
     
     //ある授業の各カウントを取得
-    NSString *attendanceCountString = [AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][0];
-    NSString *absenceCountString = [AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][1];
-    NSString *lateCountString = [AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][2];
+//    NSString *attendanceCountString = [AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][0];
+//    NSString *absenceCountString = [AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][1];
+//    NSString *lateCountString = [AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][2];
     
     
     if ([attendanceRecordCountUp isEqual:@"出席"]) {
@@ -278,15 +278,35 @@
 }
 
 //日付、出欠記録を更新
-+(void)update:(NSString *)dateAfterEdit attendanceRecordAfterEdit:(NSString *)attendanceRecordAfterEdit dateString:(NSString *)dateString attendanceRecordString:(NSString *)attendanceRecordString indexPathRow:(NSString *)indexPathRowString{
++(void)update:(NSString *)dateAfterEdit attendanceRecordAfterEdit:(NSString *)attendanceRecordAfterEdit idNumber:(NSString *)idNumberString dateString:(NSString *)dateString attendanceRecordString:(NSString *)attendanceRecordString indexPathRow:(NSString *)indexPathRowString{
     
     FMDatabase *db = [AccessDB getdb];
     [db open];
     
-    [db executeUpdate:@"UPDATE date_record_table SET date = ?, attendancerecord = ? WHERE date = ? AND attendancerecord = ? AND indexPathRow = ?;",dateAfterEdit,attendanceRecordAfterEdit,dateString,attendanceRecordString,indexPathRowString];
+    [db executeUpdate:@"UPDATE date_record_table SET date = ?, attendancerecord = ? WHERE id = ? AND date = ? AND attendancerecord = ? AND indexPathRow = ?;",dateAfterEdit,attendanceRecordAfterEdit,idNumberString,dateString,attendanceRecordString,indexPathRowString];
     
     [db close];
-    
 }
+
+//同じ日付で同じ出席状況のidを重複を除外して取得
+//+(NSString *)getID:(NSString *)dateString attendancerecord:(NSString *)attendancerecordString indexPathRow:(NSString *)indexPathString{
+//    
+//    NSString *idNumberString;
+//    
+//    FMDatabase *db = [AccessDB getdb];
+//    [db open];
+//    
+//    FMResultSet *results=[db executeQuery:@"SELECT DISTINCT id FROM date_record_table WHERE date = ? AND attendancerecord = ? AND indexPathRow = ?;",dateString,attendancerecordString,indexPathString];
+//    
+//    while ([results next]) {
+//        idNumberString = [results stringForColumn:@"id"];
+//        
+//    }
+//    [db close];
+//    
+//    NSLog(@"取得したid:%@",idNumberString);
+//
+//    return idNumberString;
+//}
 
 @end

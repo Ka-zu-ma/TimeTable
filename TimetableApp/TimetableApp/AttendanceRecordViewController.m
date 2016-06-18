@@ -146,8 +146,9 @@
         
         EditDateAndAttendaceRecordViewController *viewController = [[EditDateAndAttendaceRecordViewController alloc] init];
         
+        //同じ日付で同じ出席状況のidを重複を除外して取得
         
-        
+//        viewController.idNumberString = [AccessAttendanceRecord getID:cell.textLabel.text attendancerecord:cell.detailTextLabel.text indexPathRow:indexPathRowString];
         viewController.dateString = cell.textLabel.text;
         viewController.attendanceRecordString = cell.detailTextLabel.text;
         viewController.indexPath = _indexPath;
@@ -209,11 +210,16 @@
     
     NSString *whichButton = @"出席ボタン";
     
+    //同じ日に１回までしかボタンを押せなくしたい。
+    
+    
     [AccessAttendanceRecord countUp:[NSString stringWithFormat:@"%ld",_indexPath.row] whichButton:whichButton];
     
     NSString *indexPathRowString=[NSString stringWithFormat:@"%ld",_indexPath.row];
     
     [_attendanceButton setTitle:[AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][0] forState:UIControlStateNormal];
+    
+    
     
     //DBに出席日付登録
     [AccessAttendanceRecord registerDateAndAttendanceRecord:@"出席" indexPathRow:indexPathRowString];

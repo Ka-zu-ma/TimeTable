@@ -71,18 +71,21 @@
     
     NSString *afterEditDateString;
     
-    if (_afterEditDateString ==  nil) {
+    if (_afterEditDateString == nil) {
         
         //日付変更しないとき
         afterEditDateString = _dateString;
+        
     }else{
         afterEditDateString = _afterEditDateString;
     }
     
+    NSLog(@"ああああああ:%@",afterEditDateString);
+    
     //出席に変更した場合
     if (number == 0) {
         
-        [AccessAttendanceRecord update:afterEditDateString attendanceRecordAfterEdit:@"出席" dateString:_dateString attendanceRecordString:_attendanceRecordString indexPathRow:indexPathString];
+//        [AccessAttendanceRecord update:afterEditDateString attendanceRecordAfterEdit:@"出席" idNumber:_idNumberString dateString:_dateString attendanceRecordString:_attendanceRecordString indexPathRow:indexPathString];
         
         //DBの出欠カウントテーブル
         if ([_attendanceRecordString isEqual:@"出席"]) {
@@ -100,7 +103,7 @@
     //欠席に変更した場合
     }else if (number == 1){
         
-        [AccessAttendanceRecord update:_afterEditDateString attendanceRecordAfterEdit:@"欠席" dateString:_dateString attendanceRecordString:_attendanceRecordString indexPathRow:indexPathString];
+//        [AccessAttendanceRecord update:afterEditDateString attendanceRecordAfterEdit:@"欠席" idNumber:_idNumberString dateString:_dateString attendanceRecordString:_attendanceRecordString indexPathRow:indexPathString];
         
         
         
@@ -109,7 +112,8 @@
     //遅刻に変更した場合
     }else if (number == 2){
         
-        [AccessAttendanceRecord update:_afterEditDateString attendanceRecordAfterEdit:@"遅刻" dateString:_dateString attendanceRecordString:_attendanceRecordString indexPathRow:indexPathString];
+//        [AccessAttendanceRecord update:afterEditDateString attendanceRecordAfterEdit:@"遅刻" idNumber:_idNumberString dateString:_dateString attendanceRecordString:_attendanceRecordString indexPathRow:indexPathString];
+        
     }
     
     

@@ -13,5 +13,6 @@
 @property (strong,nonatomic) NSString *dateString;
 @property (strong,nonatomic) NSString *attendanceRecordString;
 @property (strong,nonatomic) NSIndexPath *indexPath;
+@property (strong,nonatomic) NSString *idNumberString;
 
 @end
