@@ -47,7 +47,6 @@
     //ホーム画面の授業を登録しておくDBテーブルを作成
     [AccessHomeClassDB createHomeClassTable];
     
-
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -154,8 +153,6 @@
         
         
         return cell;
-        
-        
     }
     
     ClassViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ClassViewCell" forIndexPath:indexPath];
@@ -164,6 +161,7 @@
     cell.backgroundColor = [UIColor whiteColor];
     cell.classTimeLabel.textColor = [UIColor blackColor];
     cell.classLabel.textColor = [UIColor blackColor];
+    cell.classroomLabel.textColor = [UIColor blackColor];
     
     if(indexPath.row % (_weeks.count + 1) == 0){
         
@@ -172,12 +170,12 @@
         cell.classTimeLabel.text = _classTimes[(indexPath.row) / (_weeks.count + 1)];
         
         return cell;
-        
     }
     
     cell.classTimeLabel.text = @"";
     
     cell.classLabel.text = @"いいいい";
+    cell.classroomLabel.text = @"うううう";
     
 //    if ([_classesAndIndexPathRows.allKeys containsObject:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]){
 //        

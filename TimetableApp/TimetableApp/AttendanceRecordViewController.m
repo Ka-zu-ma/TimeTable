@@ -135,7 +135,7 @@
         [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         
         //出欠カウント更新
-        [self viewWillAppear:YES];
+        [self viewWillAppear:NO];
     }];
     
     //編集ボタン
@@ -248,7 +248,6 @@
         return;
     }
 
-    
      NSString *whichButton = @"欠席ボタン";
     
     [AccessAttendanceRecord countUp:[NSString stringWithFormat:@"%ld",_indexPath.row] whichButton:whichButton];
