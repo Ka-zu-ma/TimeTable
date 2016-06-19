@@ -128,17 +128,14 @@
         //出欠データ削除
         [AccessAttendanceRecord delete:cell.textLabel.text attendancerecord:cell.detailTextLabel.text indexPathRow:indexPathRowString];
         
-        //出欠カウント1下げる。このときに同じ条件のデータが複数ある場合、複数消えてしまうのでそれに対応。
+        
         [AccessAttendanceRecord updateCountDown:cell.detailTextLabel.text indexPathRow:indexPathRowString];
-        
-        
-        
         
         [_dates removeObjectAtIndex:indexPath.row];
         [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-
         
-        
+        //出欠カウント更新
+        [self viewWillAppear:YES];
     }];
     
     //編集ボタン
@@ -146,13 +143,9 @@
         
         EditDateAndAttendaceRecordViewController *viewController = [[EditDateAndAttendaceRecordViewController alloc] init];
         
-        //同じ日付で同じ出席状況のidを重複を除外して取得
-        
-//        viewController.idNumberString = [AccessAttendanceRecord getID:cell.textLabel.text attendancerecord:cell.detailTextLabel.text indexPathRow:indexPathRowString];
         viewController.dateString = cell.textLabel.text;
         viewController.attendanceRecordString = cell.detailTextLabel.text;
         viewController.indexPath = _indexPath;
-        
         
         [self.navigationController pushViewController:viewController animated:YES];
         
@@ -161,8 +154,6 @@
     editAction.backgroundColor = [UIColor blueColor];
     
     return @[deleteAction,editAction];
-    
-    
 }
 
 //セクション高さ
@@ -170,9 +161,6 @@
     
     return 30;
 }
-
-
-
 
 #pragma mark - TableViewDatasource
 
@@ -208,18 +196,27 @@
 //出席カウントを1アップ
 - (IBAction)tappedAttendanceButton:(id)sender {
     
-    NSString *whichButton = @"出席ボタン";
-    
     //同じ日に１回までしかボタンを押せなくしたい。
+    if ([_dates containsObject:[self getToday]]) {
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"同じ日にカウントを２回以上押せません。" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){}];
+        
+        [alertController addAction:action];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+        return;
+    }
     
+    NSString *whichButton = @"出席ボタン";
     
     [AccessAttendanceRecord countUp:[NSString stringWithFormat:@"%ld",_indexPath.row] whichButton:whichButton];
     
     NSString *indexPathRowString=[NSString stringWithFormat:@"%ld",_indexPath.row];
     
     [_attendanceButton setTitle:[AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][0] forState:UIControlStateNormal];
-    
-    
     
     //DBに出席日付登録
     [AccessAttendanceRecord registerDateAndAttendanceRecord:@"出席" indexPathRow:indexPathRowString];
@@ -236,6 +233,21 @@
 }
 //欠席カウントを1アップ
 - (IBAction)tappedAbsenceButton:(id)sender {
+    
+    //同じ日に１回までしかボタンを押せなくしたい。
+    if ([_dates containsObject:[self getToday]]) {
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"同じ日にカウントを２回以上押せません。" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){}];
+        
+        [alertController addAction:action];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+        return;
+    }
+
     
      NSString *whichButton = @"欠席ボタン";
     
@@ -260,6 +272,21 @@
 //遅刻カウントを1アップ
 - (IBAction)tappedLateButton:(id)sender {
     
+    //同じ日に１回までしかボタンを押せなくしたい。
+    if ([_dates containsObject:[self getToday]]) {
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"警告" message:@"同じ日にカウントを２回以上押せません。" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){}];
+        
+        [alertController addAction:action];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+        return;
+    }
+
+    
      NSString *whichButton = @"遅刻ボタン";
     [AccessAttendanceRecord countUp:[NSString stringWithFormat:@"%ld",_indexPath.row] whichButton:whichButton];
     
@@ -276,14 +303,14 @@
 
 }
 
-//-(NSString *)getToday{
-//    
-//    NSDateFormatter *format=[[NSDateFormatter alloc]init];
-//    [format setLocale:[[NSLocale alloc]initWithLocaleIdentifier:@"ja_JP"]];
-//    [format setDateFormat:@"yyyy/MM/dd"];
-//    NSString *stringTime=[format stringFromDate:[NSDate date]];
-//    return stringTime;
-//}
+-(NSString *)getToday{
+    
+    NSDateFormatter *format=[[NSDateFormatter alloc]init];
+    [format setLocale:[[NSLocale alloc]initWithLocaleIdentifier:@"ja_JP"]];
+    [format setDateFormat:@"yyyy/MM/dd"];
+    NSString *stringTime=[format stringFromDate:[NSDate date]];
+    return stringTime;
+}
 
 
 

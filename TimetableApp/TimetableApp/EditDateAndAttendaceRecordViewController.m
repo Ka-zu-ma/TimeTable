@@ -10,6 +10,7 @@
 #import "AccessAttendanceRecord.h"
 
 @interface EditDateAndAttendaceRecordViewController ()
+
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
@@ -19,7 +20,6 @@
 
 - (IBAction)changeDatePicker:(id)sender;
 - (IBAction)tappedUpdateButton:(id)sender;
-
 
 @end
 
@@ -80,12 +80,11 @@
         afterEditDateString = _afterEditDateString;
     }
     
-    NSLog(@"ああああああ:%@",afterEditDateString);
     
     //出席に変更した場合
     if (number == 0) {
         
-//        [AccessAttendanceRecord update:afterEditDateString attendanceRecordAfterEdit:@"出席" idNumber:_idNumberString dateString:_dateString attendanceRecordString:_attendanceRecordString indexPathRow:indexPathString];
+        [AccessAttendanceRecord update:afterEditDateString attendanceRecordAfterEdit:@"出席" dateString:_dateString attendanceRecordString:_attendanceRecordString indexPathRow:indexPathString];
         
         //DBの出欠カウントテーブル
         if ([_attendanceRecordString isEqual:@"出席"]) {
@@ -93,8 +92,13 @@
             
         }else if([_attendanceRecordString isEqual:@"欠席"]){
             
+            [AccessAttendanceRecord update:@"出席" attendanceRecordCountDown:@"欠席" indexPathRow:indexPathString];
+            
+            
             
         }else{
+            
+            [AccessAttendanceRecord update:@"出席" attendanceRecordCountDown:@"遅刻" indexPathRow:indexPathString];
             
             
         }
@@ -103,25 +107,50 @@
     //欠席に変更した場合
     }else if (number == 1){
         
-//        [AccessAttendanceRecord update:afterEditDateString attendanceRecordAfterEdit:@"欠席" idNumber:_idNumberString dateString:_dateString attendanceRecordString:_attendanceRecordString indexPathRow:indexPathString];
+        [AccessAttendanceRecord update:afterEditDateString attendanceRecordAfterEdit:@"欠席" dateString:_dateString attendanceRecordString:_attendanceRecordString indexPathRow:indexPathString];
         
         
+        if ([_attendanceRecordString isEqual:@"欠席"]) {
+            
+            
+        }else if([_attendanceRecordString isEqual:@"出席"]){
+            
+            [AccessAttendanceRecord update:@"欠席" attendanceRecordCountDown:@"出席" indexPathRow:indexPathString];
+            
+        }else{
+            
+            [AccessAttendanceRecord update:@"欠席" attendanceRecordCountDown:@"遅刻" indexPathRow:indexPathString];
         
-        
+        }
         
     //遅刻に変更した場合
     }else if (number == 2){
         
-//        [AccessAttendanceRecord update:afterEditDateString attendanceRecordAfterEdit:@"遅刻" idNumber:_idNumberString dateString:_dateString attendanceRecordString:_attendanceRecordString indexPathRow:indexPathString];
+        [AccessAttendanceRecord update:afterEditDateString attendanceRecordAfterEdit:@"遅刻" dateString:_dateString attendanceRecordString:_attendanceRecordString indexPathRow:indexPathString];
+        
+        
+        
+        if ([_attendanceRecordString isEqual:@"遅刻"]) {
+            
+            
+        }else if([_attendanceRecordString isEqual:@"出席"]){
+            
+            [AccessAttendanceRecord update:@"遅刻" attendanceRecordCountDown:@"出席" indexPathRow:indexPathString];
+            
+            
+            
+        }else{
+            
+            [AccessAttendanceRecord update:@"遅刻" attendanceRecordCountDown:@"欠席" indexPathRow:indexPathString];
+            
+            
+        }
         
     }
     
     
     
     [self.navigationController popViewControllerAnimated:YES];
-
-    
-    
     
 }
 @end

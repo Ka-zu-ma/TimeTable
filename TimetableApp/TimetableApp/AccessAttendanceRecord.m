@@ -96,17 +96,17 @@
     
     if ([whichButton  isEqual: @"出席ボタン"]) {
         
-        sql = @"UPDATE attendance_record_table set attendancecount = ? WHERE indexPathRow = ?";
+        sql = @"UPDATE attendance_record_table set attendancecount = ? WHERE indexPathRow = ?;";
         number = 0;
         
     }else if([whichButton isEqual: @"欠席ボタン"]){
         
-        sql = @"UPDATE attendance_record_table set absencecount = ? WHERE indexPathRow = ?";
+        sql = @"UPDATE attendance_record_table set absencecount = ? WHERE indexPathRow = ?;";
         number = 1;
         
     }else if ([whichButton isEqual:@"遅刻ボタン"]){
         
-        sql = @"UPDATE attendance_record_table set latecount = ? WHERE indexPathRow = ?";
+        sql = @"UPDATE attendance_record_table set latecount = ? WHERE indexPathRow = ?;";
         number = 2;
     }
     NSString *countBeforeUpString = [AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRow][number];
@@ -131,45 +131,101 @@
 +(void)update:(NSString *)attendanceRecordCountUp attendanceRecordCountDown:(NSString *)attendanceRecordCountDown  indexPathRow:(NSString *)indexPathRowString{
     
     //ある授業の各カウントを取得
-//    NSString *attendanceCountString = [AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][0];
-//    NSString *absenceCountString = [AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][1];
-//    NSString *lateCountString = [AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][2];
+    NSString *attendanceCountString = [AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][0];
+    NSString *absenceCountString = [AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][1];
+    NSString *lateCountString = [AccessAttendanceRecord selectCountAtIndexPathRow:indexPathRowString][2];
     
+    
+    FMDatabase *db = [AccessDB getdb];
+    [db open];
+
     
     if ([attendanceRecordCountUp isEqual:@"出席"]) {
         
+        NSInteger attendanceCountAfterCountUp = attendanceCountString.intValue + 1;
         
+        NSString *attendanceCountAfterCountUpString = [NSString stringWithFormat:@"%ld",(long)attendanceCountAfterCountUp];
         
         if ([attendanceRecordCountDown isEqual:@"欠席"]) {
             
+            NSInteger absenceCountAfterCountDown = absenceCountString.intValue - 1;
+            
+            NSString *absenceCountAfterCountDownString = [NSString stringWithFormat:@"%ld",(long)absenceCountAfterCountDown];
+            
+            [db executeUpdate:@"UPDATE attendance_record_table set attendancecount = ?, absencecount = ? WHERE indexPathRow = ?;",attendanceCountAfterCountUpString,absenceCountAfterCountDownString,indexPathRowString];
+            
+            
         }else if ([attendanceRecordCountDown isEqual:@"遅刻"]){
+            
+            NSInteger lateCountAfterCountDown = lateCountString.intValue - 1;
+            
+            NSString *lateCountAfterCountDownString = [NSString stringWithFormat:@"%ld",(long)lateCountAfterCountDown];
+            
+            [db executeUpdate:@"UPDATE attendance_record_table set attendancecount = ?, latecount = ? WHERE indexPathRow = ?;",attendanceCountAfterCountUpString,lateCountAfterCountDownString,indexPathRowString];
+            
+            
+            
             
         }
         
     } else if ([attendanceRecordCountUp isEqual:@"欠席"]){
         
+        NSInteger absenceCountAfterCountUp = absenceCountString.intValue + 1;
+        
+        NSString *absenceCountAfterCountUpString = [NSString stringWithFormat:@"%ld",(long)absenceCountAfterCountUp];
+
+        
+        
+        
         if ([attendanceRecordCountDown isEqual:@"出席"]) {
             
+            NSInteger attendanceCountAfterCountDown = attendanceCountString.intValue - 1;
+            
+            NSString *attendanceCountAfterCountDownString = [NSString stringWithFormat:@"%ld",(long)attendanceCountAfterCountDown];
+            
+            [db executeUpdate:@"UPDATE attendance_record_table set attendancecount = ?, absencecount = ? WHERE indexPathRow = ?;",attendanceCountAfterCountDownString,absenceCountAfterCountUpString,indexPathRowString];
+            
+            
+            
         }else if ([attendanceRecordCountDown isEqual:@"遅刻"]){
+            
+            NSInteger lateCountAfterCountDown = lateCountString.intValue - 1;
+            
+            NSString *lateCountAfterCountDownString = [NSString stringWithFormat:@"%ld",(long)lateCountAfterCountDown];
+            
+            [db executeUpdate:@"UPDATE attendance_record_table set absencecount = ?, latecount = ? WHERE indexPathRow = ?;",absenceCountAfterCountUpString,lateCountAfterCountDownString,indexPathRowString];
+            
             
         }
     }else{
         
+        NSInteger lateCountAfterCountUp = lateCountString.intValue + 1;
+        
+        NSString *lateCountAfterCountUpString = [NSString stringWithFormat:@"%ld",(long)lateCountAfterCountUp];
+
+        
+        
+        
         if ([attendanceRecordCountDown isEqual:@"出席"]) {
+            
+            NSInteger attendanceCountAfterCountDown = attendanceCountString.intValue - 1;
+            
+            NSString *attendanceCountAfterCountDownString = [NSString stringWithFormat:@"%ld",(long)attendanceCountAfterCountDown];
+            
+            [db executeUpdate:@"UPDATE attendance_record_table set attendancecount = ?, latecount = ? WHERE indexPathRow = ?;",attendanceCountAfterCountDownString,lateCountAfterCountUpString,indexPathRowString];
+            
             
         }else if ([attendanceRecordCountDown isEqual:@"欠席"]){
             
+            NSInteger absenceCountAfterCountDown = absenceCountString.intValue - 1;
+            
+            NSString *absenceCountAfterCountDownString = [NSString stringWithFormat:@"%ld",(long)absenceCountAfterCountDown];
+            
+            [db executeUpdate:@"UPDATE attendance_record_table set absencecount = ?, latecount = ? WHERE indexPathRow = ?;",absenceCountAfterCountDownString,lateCountAfterCountUpString,indexPathRowString];
+            
+            
         }
     }
-    
-    
-    
-    FMDatabase *db = [AccessDB getdb];
-    [db open];
-    
-    
-    
-//    [db executeUpdate:sql,countAfterUpString,indexPathRow];
     
     [db close];
 }
@@ -278,12 +334,12 @@
 }
 
 //日付、出欠記録を更新
-+(void)update:(NSString *)dateAfterEdit attendanceRecordAfterEdit:(NSString *)attendanceRecordAfterEdit idNumber:(NSString *)idNumberString dateString:(NSString *)dateString attendanceRecordString:(NSString *)attendanceRecordString indexPathRow:(NSString *)indexPathRowString{
++(void)update:(NSString *)dateAfterEdit attendanceRecordAfterEdit:(NSString *)attendanceRecordAfterEdit dateString:(NSString *)dateString attendanceRecordString:(NSString *)attendanceRecordString indexPathRow:(NSString *)indexPathRowString{
     
     FMDatabase *db = [AccessDB getdb];
     [db open];
     
-    [db executeUpdate:@"UPDATE date_record_table SET date = ?, attendancerecord = ? WHERE id = ? AND date = ? AND attendancerecord = ? AND indexPathRow = ?;",dateAfterEdit,attendanceRecordAfterEdit,idNumberString,dateString,attendanceRecordString,indexPathRowString];
+    [db executeUpdate:@"UPDATE date_record_table SET date = ?, attendancerecord = ? WHERE date = ? AND attendancerecord = ? AND indexPathRow = ?;",dateAfterEdit,attendanceRecordAfterEdit,dateString,attendanceRecordString,indexPathRowString];
     
     [db close];
 }
