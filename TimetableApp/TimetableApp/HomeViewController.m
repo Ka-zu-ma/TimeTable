@@ -50,17 +50,20 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-//-(void)viewWillAppear:(BOOL)animated{
-//    
-//    
-//    
-//
-//
-//    [self.collectionView reloadData];
-//
-//    [super viewWillAppear:animated];
-//    
-//}
+-(void)viewWillAppear:(BOOL)animated{
+    
+    _classesAndIndexPathRows = [AccessHomeClassDB selectHomeClassTable][0];
+    _classroomsAndIndexPathRows = [AccessHomeClassDB selectHomeClassTable][1];
+    
+    for (id key in [_classesAndIndexPathRows keyEnumerator]) {
+        NSLog(@"Key:%@ Value:%@", key, [_classesAndIndexPathRows valueForKey:key]);
+    }
+    
+    for (id key in [_classroomsAndIndexPathRows keyEnumerator]) {
+        NSLog(@"Key:%@ Value:%@", key, [_classroomsAndIndexPathRows valueForKey:key]);
+    }
+    
+}
 
 
 
@@ -107,17 +110,7 @@
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     
-    _classesAndIndexPathRows = [AccessHomeClassDB selectHomeClassTable][0];
-    _classroomsAndIndexPathRows = [AccessHomeClassDB selectHomeClassTable][1];
     
-    for (id key in [_classesAndIndexPathRows keyEnumerator]) {
-        NSLog(@"Key:%@ Value:%@", key, [_classesAndIndexPathRows valueForKey:key]);
-    }
-
-    for (id key in [_classroomsAndIndexPathRows keyEnumerator]) {
-        NSLog(@"Key:%@ Value:%@", key, [_classroomsAndIndexPathRows valueForKey:key]);
-    }
-
     return 2;
 }
 
@@ -137,45 +130,48 @@
     
     if (indexPath.section == 0) {
         
-        DayOfWeekCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DayOfWeekCell" forIndexPath:indexPath];
+        DayOfWeekCell *dayOfWeekCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DayOfWeekCell" forIndexPath:indexPath];
         
-        cell.backgroundColor = [UIColor yellowColor];
-        cell.weekLabel.textColor = [UIColor blackColor];
+        dayOfWeekCell.backgroundColor = [UIColor yellowColor];
+        dayOfWeekCell.weekLabel.textColor = [UIColor blackColor];
         
         if (indexPath.row == 0) {
             
-            cell.weekLabel.text = @"";
+            dayOfWeekCell.weekLabel.text = @"";
             
-            return cell;
+            return dayOfWeekCell;
         }
         
-        cell.weekLabel.text = _weeks[indexPath.row - 1];
+        dayOfWeekCell.weekLabel.text = _weeks[indexPath.row - 1];
         
         
-        return cell;
+        return dayOfWeekCell;
     }
     
-    ClassViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ClassViewCell" forIndexPath:indexPath];
+    ClassViewCell *classCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ClassViewCell" forIndexPath:indexPath];
     
+    classCell.backgroundColor = [UIColor whiteColor];
+    classCell.classTimeLabel.textColor = [UIColor blackColor];
+    classCell.classLabel.textColor = [UIColor blackColor];
+    classCell.classroomLabel.textColor = [UIColor blackColor];
     
-    cell.backgroundColor = [UIColor whiteColor];
-    cell.classTimeLabel.textColor = [UIColor blackColor];
-    cell.classLabel.textColor = [UIColor blackColor];
-    cell.classroomLabel.textColor = [UIColor blackColor];
+    classCell.classLabel.text = @"";
+    classCell.classTimeLabel.text = @"";
+    classCell.classroomLabel.text = @"";
     
     if(indexPath.row % (_weeks.count + 1) == 0){
         
-        cell.classLabel.text = @"";
-        cell.classroomLabel.text = @"";
-        cell.classTimeLabel.text = _classTimes[(indexPath.row) / (_weeks.count + 1)];
+        classCell.classLabel.text = @"";
+        classCell.classroomLabel.text = @"";
+        classCell.classTimeLabel.text = _classTimes[(indexPath.row) / (_weeks.count + 1)];
         
-        return cell;
+        return classCell;
     }
     
-    cell.classTimeLabel.text = @"";
-    
-    cell.classLabel.text = @"いいいい";
-    cell.classroomLabel.text = @"うううう";
+//    cell.classTimeLabel.text = @"";
+//    
+    classCell.classLabel.text = @"いいい";
+//    cell.classroomLabel.text = @"うううう";
     
 //    if ([_classesAndIndexPathRows.allKeys containsObject:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]){
 //        
@@ -192,7 +188,7 @@
 //    cell.classLabel.text=@"";
 //    cell.classroomLabel.text=@"";
     
-    return cell;
+    return classCell;
 }
 
 #pragma mark - CollectionView Layout
