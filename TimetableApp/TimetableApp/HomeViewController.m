@@ -155,11 +155,11 @@
     classCell.classLabel.textColor = [UIColor blackColor];
     classCell.classroomLabel.textColor = [UIColor blackColor];
     
-    classCell.classLabel.text = @"";
-    classCell.classTimeLabel.text = @"";
-    classCell.classroomLabel.text = @"";
+//    classCell.classLabel.text = @"a";
+//    classCell.classTimeLabel.text = @"";
+//    classCell.classroomLabel.text = @"";
     
-    if(indexPath.row % (_weeks.count + 1) == 0){
+    if((indexPath.row) % (_weeks.count + 1) == 0){
         
         classCell.classLabel.text = @"";
         classCell.classroomLabel.text = @"";
@@ -169,7 +169,7 @@
     }
     
 //    cell.classTimeLabel.text = @"";
-//    
+//
     classCell.classLabel.text = @"いいい";
 //    cell.classroomLabel.text = @"うううう";
     

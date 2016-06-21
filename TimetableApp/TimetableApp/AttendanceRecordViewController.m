@@ -38,6 +38,8 @@
     //枠線角丸
     [[_attendanceButton layer] setCornerRadius:8.0];
     [_attendanceButton setClipsToBounds:YES];
+    //ボタンタイトルの位置
+    _attendanceButton.titleEdgeInsets = UIEdgeInsetsMake(15,0,0,0);
     
     [[_absenceButton layer] setBorderColor:[[UIColor blueColor]CGColor]];
     
@@ -46,12 +48,16 @@
     [[_absenceButton layer] setCornerRadius:10.0];
     [_absenceButton setClipsToBounds:YES];
     
+    _absenceButton.titleEdgeInsets = UIEdgeInsetsMake(15,0,0,0);
+    
     [[_lateButton layer] setBorderColor:[[UIColor greenColor]CGColor]];
     
     [[_lateButton layer] setBorderWidth:1.0];
     
     [[_lateButton layer] setCornerRadius:10.0];
     [_lateButton setClipsToBounds:YES];
+    
+    _lateButton.titleEdgeInsets = UIEdgeInsetsMake(15,0,0,0);
     
     _tableView.delegate = self;
     _tableView.dataSource = self;

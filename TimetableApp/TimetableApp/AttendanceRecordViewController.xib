@@ -21,23 +21,30 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G2T-uY-uiz">
-                    <rect key="frame" x="0.0" y="64" width="320" height="104"/>
+                    <rect key="frame" x="0.0" y="64" width="320" height="100"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXR-AH-0UM">
-                            <rect key="frame" x="125" y="17" width="70" height="70"/>
+                            <rect key="frame" x="125" y="15" width="70" height="70"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="70" id="8IL-1T-F4b"/>
-                                <constraint firstAttribute="height" constant="70" id="kDb-vL-yaJ"/>
+                                <constraint firstAttribute="width" constant="70" id="8IL-1T-F4b">
+                                    <variation key="heightClass=compact-widthClass=compact" constant="70"/>
+                                </constraint>
+                                <constraint firstAttribute="height" constant="70" id="kDb-vL-yaJ">
+                                    <variation key="heightClass=compact-widthClass=compact" constant="70"/>
+                                </constraint>
                             </constraints>
                             <state key="normal">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                <rect key="frame" x="249" y="-35" width="70" height="70"/>
+                            </variation>
                             <connections>
                                 <action selector="tappedAbsenceButton:" destination="-1" eventType="touchUpInside" id="rC2-Bt-bsj"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R8R-4f-hnm">
-                            <rect key="frame" x="15" y="17" width="70" height="70"/>
+                            <rect key="frame" x="15" y="15" width="70" height="70"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="70" id="IzV-KY-RvD"/>
                                 <constraint firstAttribute="height" constant="70" id="MqY-Qj-KbS"/>
@@ -45,12 +52,15 @@
                             <state key="normal">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                <rect key="frame" x="15" y="-35" width="70" height="70"/>
+                            </variation>
                             <connections>
                                 <action selector="tappedAttendanceButton:" destination="-1" eventType="touchUpInside" id="goB-nC-ocE"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiL-6h-2eX">
-                            <rect key="frame" x="235" y="17" width="70" height="70"/>
+                            <rect key="frame" x="235" y="15" width="70" height="70"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="70" id="Mso-fn-AG7"/>
                                 <constraint firstAttribute="width" constant="70" id="OCC-Q6-aIa"/>
@@ -58,6 +68,9 @@
                             <state key="normal">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                <rect key="frame" x="483" y="-35" width="70" height="70"/>
+                            </variation>
                             <connections>
                                 <action selector="tappedLateButton:" destination="-1" eventType="touchUpInside" id="Uje-7W-VXc"/>
                             </connections>
@@ -99,26 +112,36 @@
                         <constraint firstAttribute="trailing" secondItem="hiL-6h-2eX" secondAttribute="trailing" constant="15" id="Ajf-qx-BwU"/>
                         <constraint firstItem="gXR-AH-0UM" firstAttribute="centerY" secondItem="R8R-4f-hnm" secondAttribute="centerY" id="O79-GL-z2W"/>
                         <constraint firstItem="gXR-AH-0UM" firstAttribute="centerY" secondItem="G2T-uY-uiz" secondAttribute="centerY" id="ODo-wx-p0i"/>
-                        <constraint firstItem="Xzl-gw-NQO" firstAttribute="leading" secondItem="gXR-AH-0UM" secondAttribute="trailing" constant="54" id="a4g-da-nyg"/>
-                        <constraint firstItem="gXR-AH-0UM" firstAttribute="leading" secondItem="Jbo-E2-mAr" secondAttribute="trailing" constant="54" id="co3-dO-ACI"/>
+                        <constraint firstItem="Xzl-gw-NQO" firstAttribute="centerX" secondItem="hiL-6h-2eX" secondAttribute="centerX" id="SfK-0t-A64"/>
+                        <constraint firstItem="Jbo-E2-mAr" firstAttribute="centerX" secondItem="R8R-4f-hnm" secondAttribute="centerX" id="dZW-jc-0Dj"/>
                         <constraint firstItem="gXR-AH-0UM" firstAttribute="centerX" secondItem="G2T-uY-uiz" secondAttribute="centerX" id="kC1-bK-eiE"/>
                         <constraint firstItem="lJA-cr-M2C" firstAttribute="top" secondItem="G2T-uY-uiz" secondAttribute="top" constant="23" id="nga-AC-eIH"/>
+                        <constraint firstAttribute="height" constant="100" id="oBg-Ex-gUF"/>
                         <constraint firstItem="R8R-4f-hnm" firstAttribute="leading" secondItem="G2T-uY-uiz" secondAttribute="leading" constant="15" id="oT4-sH-X2O"/>
                         <constraint firstItem="lJA-cr-M2C" firstAttribute="centerY" secondItem="Jbo-E2-mAr" secondAttribute="centerY" id="oZE-fw-pFz"/>
                         <constraint firstItem="Xzl-gw-NQO" firstAttribute="centerY" secondItem="Jbo-E2-mAr" secondAttribute="centerY" id="x8O-nL-JMa"/>
                     </constraints>
+                    <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                        <rect key="frame" x="0.0" y="64" width="568" height="0.0"/>
+                    </variation>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xOs-dg-WKu">
-                    <rect key="frame" x="8" y="220" width="304" height="348"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xOs-dg-WKu">
+                    <rect key="frame" x="0.0" y="164" width="320" height="404"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                        <rect key="frame" x="0.0" y="64" width="568" height="256"/>
+                    </variation>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="G2T-uY-uiz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="02j-23-Hcy"/>
+                <constraint firstAttribute="bottom" secondItem="xOs-dg-WKu" secondAttribute="bottom" id="96j-qs-0Lg"/>
+                <constraint firstItem="xOs-dg-WKu" firstAttribute="top" secondItem="G2T-uY-uiz" secondAttribute="bottom" id="Sw9-Ou-yhw"/>
                 <constraint firstItem="G2T-uY-uiz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="efU-Ri-sCf"/>
-                <constraint firstAttribute="bottom" secondItem="G2T-uY-uiz" secondAttribute="bottom" constant="400" id="fuU-so-GbT"/>
+                <constraint firstAttribute="trailing" secondItem="xOs-dg-WKu" secondAttribute="trailing" id="f8H-l6-o5z"/>
                 <constraint firstAttribute="trailing" secondItem="G2T-uY-uiz" secondAttribute="trailing" id="h0I-33-a54"/>
+                <constraint firstItem="xOs-dg-WKu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tg8-kB-hx3"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
