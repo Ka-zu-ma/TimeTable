@@ -47,6 +47,9 @@
     //ホーム画面の授業を登録しておくDBテーブルを作成
     [AccessHomeClassDB createHomeClassTable];
     
+    NSLog(@"画面横幅:%f",[[UIScreen mainScreen]bounds].size.width);
+    NSLog(@"画面縦%f",[[UIScreen mainScreen]bounds].size.height);
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -64,9 +67,6 @@
     }
     
 }
-
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -205,7 +205,10 @@
         
         //曜日のセルの大きさ
         //(20 + _weeks.count)は、セル同士の隙間を考慮している
-        float widthsize = ([[UIScreen mainScreen]bounds].size.width - (20 + _weeks.count))/(_weeks.count);
+        float widthsize = ([[UIScreen mainScreen] bounds].size.width - (20 + _weeks.count))/(_weeks.count);
+        
+        
+        
         
         return CGSizeMake(widthsize, 20);
     }
@@ -229,8 +232,6 @@
 
 //セル同士の横間隔
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    
-//    NSLog(@"a");
     
     return 1.0f;
 }
