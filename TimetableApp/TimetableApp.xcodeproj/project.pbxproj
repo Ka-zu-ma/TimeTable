@@ -213,10 +213,10 @@
 		9AA95AB61D003C3C0088014C /* TimetableApp */ = {
 			isa = PBXGroup;
 			children = (
-				9A4CCD301D047667006380F2 /* Models */,
-				9ABE982E1D041C3B00FD82ED /* TableViewCell */,
 				9AA95ABA1D003C3C0088014C /* AppDelegate.h */,
 				9AA95ABB1D003C3C0088014C /* AppDelegate.m */,
+				9A4CCD301D047667006380F2 /* Models */,
+				9ABE982E1D041C3B00FD82ED /* TableViewCell */,
 				9AA95AFE1D0050C10088014C /* CollectionViewCell */,
 				9AA95AF31D004A5D0088014C /* Controllers */,
 				9AA95AF21D0049BE0088014C /* Home */,

@@ -193,7 +193,7 @@
 
 #pragma mark - CollectionView Layout
 
-//画面サイズに応じてセルのサイズを変更
+//セルのサイズを変更
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section == 0) {
@@ -207,7 +207,7 @@
         //(20 + _weeks.count)は、セル同士の隙間を考慮している
         float widthsize = ([[UIScreen mainScreen] bounds].size.width - (20 + _weeks.count))/(_weeks.count);
         
-        
+        NSLog(@"曜日セル横幅:%f",widthsize);
         
         
         return CGSizeMake(widthsize, 20);
@@ -216,7 +216,8 @@
     //時限のセルの大きさ
     if ((indexPath.row % (_weeks.count + 1)) == 0) {
         
-        float heightsize = ([[UIScreen mainScreen] bounds].size.height - self.navigationController.navigationBar.bounds.size.height - (20 + _classTimes.count)) / (_classTimes.count);
+        //ステータスバーの高さを考慮
+        float heightsize = ([[UIScreen mainScreen] bounds].size.height - [[UIApplication sharedApplication] statusBarFrame].size.height - self.navigationController.navigationBar.bounds.size.height - (20 + _classTimes.count)) / (_classTimes.count);
         
         return CGSizeMake(20, heightsize);
         
@@ -224,19 +225,19 @@
     
     float widthsize = ([[UIScreen mainScreen]bounds].size.width - (20 + _weeks.count) )/(_weeks.count);
     
-    float heightsize = ([[UIScreen mainScreen]bounds].size.height - self.navigationController.navigationBar.bounds.size.height - (20 + _classTimes.count))/(_classTimes.count);
+    float heightsize = ([[UIScreen mainScreen]bounds].size.height - [[UIApplication sharedApplication] statusBarFrame].size.height - self.navigationController.navigationBar.bounds.size.height - (20 + _classTimes.count))/(_classTimes.count);
     
     return CGSizeMake(widthsize, heightsize);
    
 }
 
-//セル同士の横間隔
+//垂直方向のセル間のマージンの最小値
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
     
     return 1.0f;
 }
 
-//セル同士の縦間隔
+//水平方向のセル間のマージンの最小値
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
     
     return 1.0f;
