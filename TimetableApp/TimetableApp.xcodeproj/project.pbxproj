@@ -213,6 +213,7 @@
 		9AA95AB61D003C3C0088014C /* TimetableApp */ = {
 			isa = PBXGroup;
 			children = (
+				9AA95B041D01A2140088014C /* memo */,
 				9AA95ABA1D003C3C0088014C /* AppDelegate.h */,
 				9AA95ABB1D003C3C0088014C /* AppDelegate.m */,
 				9A4CCD301D047667006380F2 /* Models */,
@@ -224,7 +225,6 @@
 				9AA95AC51D003C3C0088014C /* LaunchScreen.storyboard */,
 				9AA95AC81D003C3C0088014C /* Info.plist */,
 				9AA95AB71D003C3C0088014C /* Supporting Files */,
-				9AA95B041D01A2140088014C /* memo */,
 			);
 			path = TimetableApp;
 			sourceTree = "<group>";

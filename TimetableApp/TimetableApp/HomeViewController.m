@@ -151,13 +151,15 @@
     ClassViewCell *classCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ClassViewCell" forIndexPath:indexPath];
     
     classCell.backgroundColor = [UIColor whiteColor];
-    classCell.classTimeLabel.textColor = [UIColor blackColor];
-    classCell.classLabel.textColor = [UIColor blackColor];
-    classCell.classroomLabel.textColor = [UIColor blackColor];
+    classCell.classLabel.adjustsFontSizeToFitWidth=YES;
+    
+//    classCell.classTimeLabel.textColor = [UIColor blackColor];
+//    classCell.classLabel.textColor = [UIColor blackColor];
+//    classCell.classroomLabel.textColor = [UIColor blackColor];
     
 //    classCell.classLabel.text = @"a";
-//    classCell.classTimeLabel.text = @"";
-//    classCell.classroomLabel.text = @"";
+//    classCell.classTimeLabel.text = @"b";
+//    classCell.classroomLabel.text = @"c";
     
     if((indexPath.row) % (_weeks.count + 1) == 0){
         
@@ -168,27 +170,31 @@
         return classCell;
     }
     
-//    cell.classTimeLabel.text = @"";
-//
+    classCell.classTimeLabel.text = @"";
     classCell.classLabel.text = @"いいい";
-//    cell.classroomLabel.text = @"うううう";
     
+    NSLog(@"%@",classCell.classLabel.text);
+    
+//    classCell.classroomLabel.text = @"うううう";
+//    
 //    if ([_classesAndIndexPathRows.allKeys containsObject:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]){
 //        
-//        NSLog(@"あいうえお");
+////        NSLog(@"あいうえお");
 //        
-////        cell.classLabel.text = (NSString *)[_classesAndIndexPathRows objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
-//        cell.classroomLabel.text = (NSString *)[_classroomsAndIndexPathRows objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+//        classCell.classLabel.text = (NSString *)[_classesAndIndexPathRows objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
 //        
-//        NSLog(@"やっほー:%@",[_classesAndIndexPathRows objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]);
+//        classCell.classroomLabel.text = (NSString *)[_classroomsAndIndexPathRows objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
 //        
-//        return cell;
+////        NSLog(@"やっほー:%@",[_classesAndIndexPathRows objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]);
+//        
+//        return classCell;
 //    }
-    
-//    cell.classLabel.text=@"";
-//    cell.classroomLabel.text=@"";
+//    
+//    classCell.classLabel.text=@"";
+//    classCell.classroomLabel.text=@"";
     
     return classCell;
+    
 }
 
 #pragma mark - CollectionView Layout
