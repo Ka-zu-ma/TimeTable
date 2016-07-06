@@ -32,7 +32,6 @@
 		9AA95AFD1D0050B70088014C /* ClassViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA95AFB1D0050B70088014C /* ClassViewCell.xib */; };
 		9AA95B021D0192B00088014C /* DayOfWeekCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA95B001D0192B00088014C /* DayOfWeekCell.m */; };
 		9AA95B031D0192B00088014C /* DayOfWeekCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA95B011D0192B00088014C /* DayOfWeekCell.xib */; };
-		9AA95B051D01A2140088014C /* memo in Resources */ = {isa = PBXBuildFile; fileRef = 9AA95B041D01A2140088014C /* memo */; };
 		9ABE98321D041C6A00FD82ED /* ClassTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABE98301D041C6A00FD82ED /* ClassTableCell.m */; };
 		9ABE98331D041C6A00FD82ED /* ClassTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ABE98311D041C6A00FD82ED /* ClassTableCell.xib */; };
 		9ABE98371D04526A00FD82ED /* RegisterClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABE98351D04526A00FD82ED /* RegisterClassViewController.m */; };
@@ -101,7 +100,6 @@
 		9AA95AFF1D0192B00088014C /* DayOfWeekCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayOfWeekCell.h; sourceTree = "<group>"; };
 		9AA95B001D0192B00088014C /* DayOfWeekCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayOfWeekCell.m; sourceTree = "<group>"; };
 		9AA95B011D0192B00088014C /* DayOfWeekCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayOfWeekCell.xib; sourceTree = "<group>"; };
-		9AA95B041D01A2140088014C /* memo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = memo; sourceTree = "<group>"; };
 		9ABE982F1D041C6A00FD82ED /* ClassTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassTableCell.h; sourceTree = "<group>"; };
 		9ABE98301D041C6A00FD82ED /* ClassTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassTableCell.m; sourceTree = "<group>"; };
 		9ABE98311D041C6A00FD82ED /* ClassTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassTableCell.xib; sourceTree = "<group>"; };
@@ -213,7 +211,6 @@
 		9AA95AB61D003C3C0088014C /* TimetableApp */ = {
 			isa = PBXGroup;
 			children = (
-				9AA95B041D01A2140088014C /* memo */,
 				9AA95ABA1D003C3C0088014C /* AppDelegate.h */,
 				9AA95ABB1D003C3C0088014C /* AppDelegate.m */,
 				9A4CCD301D047667006380F2 /* Models */,
@@ -425,7 +422,6 @@
 				9ABE98331D041C6A00FD82ED /* ClassTableCell.xib in Resources */,
 				9ABE98381D04526A00FD82ED /* RegisterClassViewController.xib in Resources */,
 				9A386E291D072C03002CBB76 /* AttendanceRecordViewController.xib in Resources */,
-				9AA95B051D01A2140088014C /* memo in Resources */,
 				9AA95AF81D004A8F0088014C /* ClassListViewController.xib in Resources */,
 				9AA95AC41D003C3C0088014C /* Assets.xcassets in Resources */,
 				9A6949831D09AA800014174C /* AttendanceRecordCell.xib in Resources */,

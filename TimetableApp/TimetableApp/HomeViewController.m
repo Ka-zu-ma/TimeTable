@@ -151,7 +151,7 @@
     ClassViewCell *classCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ClassViewCell" forIndexPath:indexPath];
     
     classCell.backgroundColor = [UIColor whiteColor];
-    classCell.classLabel.adjustsFontSizeToFitWidth=YES;
+//    classCell.classLabel.adjustsFontSizeToFitWidth=YES;
     
 //    classCell.classTimeLabel.textColor = [UIColor blackColor];
 //    classCell.classLabel.textColor = [UIColor blackColor];
@@ -172,8 +172,9 @@
     
     classCell.classTimeLabel.text = @"";
     classCell.classLabel.text = @"いいい";
+//    classCell.classroomLabel.text = @"あ";
     
-    NSLog(@"%@",classCell.classLabel.text);
+//    NSLog(@"%@",classCell.classLabel.text);
     
 //    classCell.classroomLabel.text = @"うううう";
 //    
